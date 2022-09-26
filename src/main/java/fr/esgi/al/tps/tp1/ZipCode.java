@@ -1,4 +1,4 @@
-package fr.esgi.al.tps.al2.tp1;
+package fr.esgi.al.tps.tp1;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,6 @@
-package fr.esgi.al.tps.al2.tp1;
+package fr.esgi.al.tps.tp1;
 
 import java.util.Map;
-import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
