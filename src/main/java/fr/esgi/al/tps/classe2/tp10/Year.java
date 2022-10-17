@@ -10,8 +10,8 @@ public class Year {
         this.value = value;
     }
 
-    public Year next(){
-        return new Year(value+1);
+    public Year next() {
+        return new Year(value + 1);
     }
 
     @Override
