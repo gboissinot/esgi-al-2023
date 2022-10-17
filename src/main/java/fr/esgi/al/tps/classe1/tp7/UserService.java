@@ -9,11 +9,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void create(User user){
+    public void create(User user) {
         userRepository.save(user);
     }
 
-    public List<User> all(){
+    public List<User> all() {
         return userRepository.findAll();
     }
 }

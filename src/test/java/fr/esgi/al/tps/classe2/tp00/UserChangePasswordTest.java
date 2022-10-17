@@ -1,4 +1,4 @@
-package fr.esgi.al.tps.classe2.tp7;
+package fr.esgi.al.tps.classe2.tp00;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

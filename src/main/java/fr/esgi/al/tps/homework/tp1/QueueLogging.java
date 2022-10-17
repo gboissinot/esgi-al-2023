@@ -13,15 +13,15 @@ final class QueueLogging implements Logging {
         this.messageBus = messageBus;
     }
 
-    @Override
-    public void log(String logMessage) {
-        messageBus.send(TOPIC_NAME, MessageEncoder.encode(logMessage));
-    }
-
     public static QueueLogging create(MessageBus messageBus) {
         //Ensure topic creation
 
         //Create the object
         return new QueueLogging(messageBus);
+    }
+
+    @Override
+    public void log(String logMessage) {
+        messageBus.send(TOPIC_NAME, MessageEncoder.encode(logMessage));
     }
 }

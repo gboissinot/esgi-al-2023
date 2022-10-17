@@ -1,4 +1,4 @@
-package fr.esgi.al.tps.classe2.tp7;
+package fr.esgi.al.tps.classe2.tp00;
 
 public class ChangePasswordService {
 
@@ -8,7 +8,7 @@ public class ChangePasswordService {
         this.eventDispatcher = eventDispatcher;
     }
 
-    public void changePassword(String newPassword){
+    public void changePassword(String newPassword) {
         this.eventDispatcher.dispatch(new UserPasswordChanged(newPassword));
     }
 }
