@@ -1,0 +1,5 @@
+package fr.esgi.al.tps.classe2.tp7;
+
+public interface EventDispatcher {
+    void dispatch(Event event);
+}
