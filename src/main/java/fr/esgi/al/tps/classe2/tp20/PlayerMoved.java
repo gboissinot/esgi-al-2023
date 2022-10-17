@@ -2,22 +2,13 @@ package fr.esgi.al.tps.classe2.tp20;
 
 import java.util.Objects;
 
-public class PlayerMoved implements Event {
+final class PlayerMoved implements Event {
     private final int x;
     private final int y;
 
     public PlayerMoved(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 
     @Override

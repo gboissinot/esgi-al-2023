@@ -2,7 +2,8 @@ package fr.esgi.al.tps.classe2.tp18;
 
 import java.util.Objects;
 
-public class PlayerMoved implements Event {
+final class PlayerMoved implements Event {
+
     private final Position position;
 
     public PlayerMoved(Position position) {

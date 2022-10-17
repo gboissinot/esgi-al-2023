@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe2.tp22;
 
 // Read model object
-public class PlayerReport {
+final class PlayerReport {
 
     private Position position;
 

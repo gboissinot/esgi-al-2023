@@ -2,10 +2,10 @@ package fr.esgi.al.tps.classe2.tp20;
 
 import java.util.Objects;
 
-public class Position {
+final class Position {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Position(int x, int y) {
         this.x = x;

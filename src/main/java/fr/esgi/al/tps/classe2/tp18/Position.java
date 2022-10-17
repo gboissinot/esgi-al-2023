@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe2.tp18;
 
 import java.util.Objects;
 
-public class Position {
+final class Position {
 
     private int x;
     private int y;

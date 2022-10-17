@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe2.tp21;
 
 import java.util.Objects;
 
-public class PlayerMoved implements Event {
+final class PlayerMoved implements Event {
     private final int x;
     private final int y;
 

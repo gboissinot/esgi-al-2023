@@ -3,7 +3,7 @@ package fr.esgi.al.tps.classe2.tp21;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+final class Player {
 
     private Position readPosition;
 

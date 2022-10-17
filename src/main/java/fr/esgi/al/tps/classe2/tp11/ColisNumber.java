@@ -1,6 +1,6 @@
 package fr.esgi.al.tps.classe2.tp11;
 
-public class ColisNumber {
+public final class ColisNumber {
 
     private final String value;
 

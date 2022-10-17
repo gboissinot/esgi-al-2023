@@ -3,13 +3,13 @@ package fr.esgi.al.tps.classe2.tp22;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+final class Player {
 
     private final List<Event> recordedEvents;
 
-    public Player(Position intialPosition) {
+    public Player(Position initialPosition) {
         this.recordedEvents = new ArrayList<>();
-        this.recordedEvents.add(new PlayerTookInitialPosition(intialPosition));
+        this.recordedEvents.add(new PlayerTookInitialPosition(initialPosition));
     }
 
     public void moveLeft(int steps) {

@@ -1,6 +1,5 @@
 package fr.esgi.al.tps.classe2.tp12;
 
-
 import java.time.LocalDateTime;
 
 final class Colis {

@@ -5,7 +5,7 @@ import fr.esgi.al.tps.classe2.tp9.domain.UserService;
 import fr.esgi.al.tps.classe2.tp9.infrastructure.MySQLUserDAO;
 
 //USE IOC
-public class ServiceContainer {
+public final class ServiceContainer {
 
     public static UserService getUserService() {
         UserDAO userDAO = new MySQLUserDAO();

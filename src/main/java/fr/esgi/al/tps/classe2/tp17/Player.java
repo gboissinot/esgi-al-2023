@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe2.tp17;
 
 import java.util.Objects;
 
-public class Player {
+final class Player {
 
     private Position position;
 

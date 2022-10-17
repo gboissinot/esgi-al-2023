@@ -1,6 +1,6 @@
 package fr.esgi.al.tps.classe2.tp8;
 
-public class ReservationRequest {
+final class ReservationRequest {
 
     private final int numberOfRooms;
     private final int nbumberOfAdults;

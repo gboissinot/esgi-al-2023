@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe2.tp16.exposition;
 
 //DTO
-public class ChangeUserRequest {
+public final class ChangeUserRequest {
 
     public final String id;
     public final String newLastName;
