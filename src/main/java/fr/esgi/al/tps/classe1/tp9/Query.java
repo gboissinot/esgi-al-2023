@@ -14,6 +14,10 @@ final class Query {
         this.orderBy = orderBy;
     }
 
+    public static QueryBuilder create() {
+        return new QueryBuilder();
+    }
+
     @Override
     public String toString() {
         return "Query{" +
@@ -22,9 +26,5 @@ final class Query {
                 ", where='" + where + '\'' +
                 ", orderBy='" + orderBy + '\'' +
                 '}';
-    }
-
-    public static QueryBuilder create() {
-        return new QueryBuilder();
     }
 }

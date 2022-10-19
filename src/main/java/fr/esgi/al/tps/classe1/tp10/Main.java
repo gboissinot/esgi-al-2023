@@ -1,6 +1,5 @@
 package fr.esgi.al.tps.classe1.tp10;
 
-import fr.esgi.al.tps.classe1.tp10.domain.UserDAO;
 import fr.esgi.al.tps.classe1.tp10.domain.UserService;
 
 public class Main {
