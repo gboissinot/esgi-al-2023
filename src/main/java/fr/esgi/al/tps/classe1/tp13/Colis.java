@@ -1,6 +1,7 @@
-package fr.esgi.al.tps.classe1.tp12;
+package fr.esgi.al.tps.classe1.tp13;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 //Entity
@@ -9,19 +10,25 @@ final class Colis {
     private final ColisId number;
     private ColisStatus status;
     private final LocalDateTime createdDate;
+    private ColisHistory history;
 
-    private Colis(ColisId number, ColisStatus status, LocalDateTime createdDate) {
+    private Colis(ColisId number, ColisStatus status, LocalDateTime createdDate, ColisHistory history) {
         this.number = number;
         this.status = status;
         this.createdDate = createdDate;
+        this.history = history;
     }
 
     public static Colis create(int number) {
-        return new Colis(new ColisId("#COL"+ number), ColisStatus.IN_PREPARATION, LocalDateTime.now());
+        return new Colis(new ColisId("#COL" + number),
+                ColisStatus.IN_PREPARATION,
+                LocalDateTime.now(),
+                ColisHistory.create(ColisStatus.IN_PREPARATION));
     }
 
     public void markAsDelivered() {
         this.status = ColisStatus.DELIVERED;
+        this.history = this.history.add(ColisStatus.DELIVERED);
     }
 
     public void cancel() {
@@ -30,6 +37,7 @@ final class Colis {
         }
 
         this.status = ColisStatus.CANCELED;
+        this.history = this.history.add(ColisStatus.CANCELED);
     }
 
     @Override
@@ -45,12 +53,18 @@ final class Colis {
         return Objects.hash(number);
     }
 
+
     @Override
     public String toString() {
         return "Colis{" +
                 "number=" + number +
                 ", status=" + status +
                 ", createdDate=" + createdDate +
+                ", history=" + history +
                 '}';
+    }
+
+    public List<ColisStatus> history() {
+        return this.history.value();
     }
 }
