@@ -26,7 +26,7 @@ final class Colis {
                 ColisHistory.create(ColisStatus.IN_PREPARATION));
     }
 
-    public void markAsDelivered() {
+    public void deliver() {
         this.status = ColisStatus.DELIVERED;
         this.history = this.history.add(ColisStatus.DELIVERED);
     }

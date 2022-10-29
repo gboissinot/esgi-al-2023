@@ -20,7 +20,7 @@ final class Colis {
         return new Colis(new ColisId("#COL" + number), ColisStatus.IN_PREPARATION, LocalDateTime.now());
     }
 
-    public void markAsDelivered() {
+    public void deliver() {
         this.status = ColisStatus.DELIVERED;
     }
 

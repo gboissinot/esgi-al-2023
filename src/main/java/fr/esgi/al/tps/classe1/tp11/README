@@ -4,4 +4,4 @@
 ## Notes
 - Year object is immutable
 - The next() method creates a new object
-- equals() and hashcode() are overridden : the comparison is done by value
+- equals() and hashcode() are overridden : the comparison is done within all properties
