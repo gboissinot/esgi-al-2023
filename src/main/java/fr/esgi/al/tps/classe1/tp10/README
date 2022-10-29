@@ -1,1 +1,8 @@
-Différence entre DIP & DI
+## Description
+- DIP and DI illustration with a DAO
+
+## Notes
+- Technical data implementation is marked as 'infrastructure'
+- Logical implementation with potential business rule  is marked as 'domain'
+- UserService uses the UserDAO abstraction : the doesn't know the implementation details
+- UserDAO has two different implementations : the implementation is injected at boot-time

@@ -8,7 +8,7 @@ final class ReservationRequest {
 
     public ReservationRequest(int numberOfRooms, int numberOfAdults, int numberOfChildren) {
         if (numberOfChildren + numberOfAdults > numberOfRooms) {
-            throw new ReservationException("Can't book most room of occupants.");
+            throw new ReservationException("Can't book more rooms than occupants.");
         }
         this.numberOfRooms = numberOfRooms;
         this.numberOfAdults = numberOfAdults;

@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe1.tp11;
 
 import java.util.Objects;
 
-public final class Year {
+final class Year {
 
     private final int value;
 
