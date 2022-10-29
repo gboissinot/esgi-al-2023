@@ -1,6 +1,6 @@
 package fr.esgi.al.tps.classe1.tp2;
 
-public class FII implements Foo {
+public class Fii implements Foo {
 
     @Override
     public void doSomething() {

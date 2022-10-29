@@ -1,0 +1,7 @@
+## Description
+- First polymorphism implementation
+
+## Notes
+- The bar() method can change among the Foo implementation
+- A functional interface has only one method
+- An implementation of a functional interface can be replaced by a lambda (just sugar code)

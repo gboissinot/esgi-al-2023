@@ -8,6 +8,7 @@ public final class ServiceLocator {
             "logger", new MyCustomLogger()
     );
 
+    //We add a protection : the constructor cannot be used
     private ServiceLocator() {
         throw new AssertionError();
     }

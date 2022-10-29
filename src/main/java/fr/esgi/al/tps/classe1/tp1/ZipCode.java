@@ -39,6 +39,11 @@ final class ZipCode {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(digit1, digit2, digit3, digit4, digit5);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -51,14 +56,9 @@ final class ZipCode {
         return sb.append(digit1).append(digit2).append(digit3).append(digit4).append(digit5).toString();
     }
 
-    public String departement() {
+    public String department() {
         StringBuilder sb = new StringBuilder();
         return sb.append(digit1).append(digit2).toString();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(digit1, digit2, digit3, digit4, digit5);
     }
 
     @Override

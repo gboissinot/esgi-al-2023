@@ -1,0 +1,8 @@
+## Description
+- Complete polymorphism and dependency injection illustration
+
+## Notes
+- Function interfaces are privileged
+- Implementation can be named "Default...", "Null..."
+- NullFormmatter is a dummy object
+- FileLogger is a first implementation (not optimized)

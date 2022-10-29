@@ -1,0 +1,8 @@
+## Description
+- Dependency injection illustration
+
+## Notes
+- ServiceLocator pattern enable to locate objects
+- A logger endpoint with multiple implementations
+- A service object with a logger as a dependency
+- Dependency injection is preferable to the ServiceLocator pattern

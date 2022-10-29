@@ -1,0 +1,8 @@
+## Description
+- Factory pattern illustration
+
+## Notes
+- LoggerFactory is a factory class providing two implementation
+- The factory object has the responsibility of the creation of the object graph
+- logFilePath in FilesystemLogger is a configuration value.
+Verification of the value is done in the factory before dependency injection.
