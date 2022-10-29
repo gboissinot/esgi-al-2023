@@ -1,7 +1,9 @@
 package fr.esgi.al.tps.classe1.tp19.domain;
 
+import java.util.UUID;
+
 // Application service
-public class UserService {
+public final class UserService {
 
     private final UserRepository userRepository;
 
@@ -9,7 +11,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void create(User user) {
+    public void create(String username, String city) {
+        var user = new User(UUID.randomUUID().toString(), username, new Address(city));
         userRepository.save(user);
     }
 }

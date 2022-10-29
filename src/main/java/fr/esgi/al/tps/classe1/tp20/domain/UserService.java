@@ -3,7 +3,7 @@ package fr.esgi.al.tps.classe1.tp20.domain;
 import java.util.Optional;
 
 // Application service
-public class UserService {
+public final class UserService {
 
     private final UserRepository userRepository;
 
@@ -11,7 +11,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void create(User user) {
+    public void create(String username, String city) {
+        var userId = userRepository.nextId();
+        User user = new User(userId, username, new Address(city));
         userRepository.add(user);
     }
 

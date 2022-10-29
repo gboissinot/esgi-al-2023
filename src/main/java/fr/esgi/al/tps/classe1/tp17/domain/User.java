@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe1.tp17.domain;
 
-//Entity
-public class User {
+//Root Entity
+public final class User {
 
     private final String id;
     private final String username;
@@ -23,5 +23,14 @@ public class User {
 
     public Address getAddress() {
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", address=" + address +
+                '}';
     }
 }

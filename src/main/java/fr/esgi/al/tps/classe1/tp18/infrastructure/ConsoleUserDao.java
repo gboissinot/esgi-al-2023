@@ -1,8 +1,9 @@
 package fr.esgi.al.tps.classe1.tp18.infrastructure;
 
 import fr.esgi.al.tps.classe1.tp18.domain.UserDao;
+import fr.esgi.al.tps.classe1.tp18.domain.UserDataModel;
 
-public class ConsoleUserDao implements UserDao {
+public final class ConsoleUserDao implements UserDao {
     @Override
     public void find(UserDataModel user) {
         System.out.println("[ConsoleUserDao] - find");

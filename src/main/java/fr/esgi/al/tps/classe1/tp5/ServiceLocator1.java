@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe1.tp5;
 
 import java.util.Map;
 
-public final class ServiceLocator1 {
+final class ServiceLocator1 {
 
     private static final Map<String, Object> _registry = Map.of(
             "service1", new MyService1(),

@@ -9,7 +9,15 @@ public class UserService {
         this.users = users;
     }
 
-    public void create(User user) {
+    /**
+     * Creates the user
+     *
+     * @param username the given username
+     * @param city     the given city address
+     */
+    public void create(String username, String city) {
+        var userId = users.nextId();
+        User user = new User(userId, username, new Address(city));
         users.add(user);
     }
 

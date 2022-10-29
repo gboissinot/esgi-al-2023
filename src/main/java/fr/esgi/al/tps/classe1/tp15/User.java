@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe1.tp15;
 
 //Entity
-public class User {
+final class User {
 
     private final String id;
     private final String username;

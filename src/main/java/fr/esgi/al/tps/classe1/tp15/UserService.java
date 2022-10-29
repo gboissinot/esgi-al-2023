@@ -3,11 +3,12 @@ package fr.esgi.al.tps.classe1.tp15;
 import java.util.UUID;
 
 // Application service
-public class UserService {
+final class UserService {
 
     public void create(CreateUserRequest createUserRequest) {
+        //Make User creation
         User user = new User(UUID.randomUUID().toString(),
                 createUserRequest.username);
-        //Make User creation
+        System.out.println("[Service] - create - " + user);
     }
 }

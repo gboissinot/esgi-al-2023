@@ -1,6 +1,7 @@
 package fr.esgi.al.tps.classe1.tp20.domain;
 
-public class Address {
+//Value Object
+public final class Address {
     private final String city;
 
     public Address(String city) {

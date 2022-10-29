@@ -1,6 +1,6 @@
 package fr.esgi.al.tps.classe1.tp3;
 
-public class MyService {
+final class MyService {
 
     private final Logger logger;
 
@@ -12,6 +12,6 @@ public class MyService {
     void myMethod() {
         // Inject the logger through the service locator
         //Logger logger = ServiceLocator.getLogger();
-        logger.log("my Method");
+        logger.log("myMethod");
     }
 }

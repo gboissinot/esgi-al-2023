@@ -3,8 +3,8 @@
 
 ## Notes
 - A DTO has no business rules
-- All DTO properties are accessible
+- All DTOs properties are accessible
 - A DTO object is generally mutable after creation
-- ScheduleMeetup1  : properties are private, getter/setters for all properties
+- ScheduleMeetup1 : properties are private, getter/setters for all properties
 - ScheduleMeetup2 : properties are directly public. We economize public getters/setters
 - ScheduleMeetup3 : properties are directly public and we add public constructor to facilitate the object creation

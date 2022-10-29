@@ -16,15 +16,14 @@ public class Main {
         var userRepository = new InMemoryUserRepository();
         var userController = new UserController(new UserService(userRepository));
 
-        var userId = userRepository.nextId();
-        userController.create(new CreateUserRequest(userId, "GREGORY", "ALFORTVILLE"));
+        userController.create(new CreateUserRequest("GREGORY", "ALFORTVILLE"));
 
-        final Optional<User> optionalUser = userRepository.findById(userId);
-        final User user = optionalUser.get();
+        final Optional<User> optionalUser = userRepository.findByUsername("GREGORY");
+        var user = optionalUser.get();
         System.out.println(user);
 
-        userController.changeAddress(userId, new Address("PARIS"));
+        userController.changeAddress(user.getId(), new Address("PARIS"));
 
-        userRepository.findById(userId).ifPresent(user1 -> System.out.println(user1));
+        userRepository.findById(user.getId()).ifPresent(user1 -> System.out.println(user1));
     }
 }

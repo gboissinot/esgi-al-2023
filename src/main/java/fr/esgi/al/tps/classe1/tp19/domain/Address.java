@@ -1,6 +1,6 @@
 package fr.esgi.al.tps.classe1.tp19.domain;
 
-public class Address {
+public final class Address {
     private final String city;
 
     public Address(String city) {

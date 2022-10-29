@@ -3,7 +3,7 @@ package fr.esgi.al.tps.classe1.tp14;
 import java.time.LocalDateTime;
 
 //DTO
-public class ScheduleMeetup3 {
+final class ScheduleMeetup3 {
 
     public final String title;
     public final LocalDateTime createdDate;

@@ -1,9 +1,13 @@
 package fr.esgi.al.tps.classe1.tp16.domain;
 
-// Application service
-public class UserService {
+import java.util.UUID;
 
-    public void create(User user) {
-        //Make User creation
+// Application service
+public final class UserService {
+
+    public void create(String username) {
+        //User creation
+        User user = new User(UUID.randomUUID().toString(), username);
+        System.out.println("[UserService] - create - " + user);
     }
 }

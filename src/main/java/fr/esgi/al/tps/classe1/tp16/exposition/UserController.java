@@ -1,12 +1,9 @@
 package fr.esgi.al.tps.classe1.tp16.exposition;
 
-import fr.esgi.al.tps.classe1.tp16.domain.User;
 import fr.esgi.al.tps.classe1.tp16.domain.UserService;
 
-import java.util.UUID;
-
 //Controller
-public class UserController {
+public final class UserController {
 
     private final UserService userService;
 
@@ -15,12 +12,11 @@ public class UserController {
     }
 
     public void create(CreateUserRequest createUserRequest) {
-        //Validation of DTO
+        //DTO Validation
         if (createUserRequest.username == null) {
             throw new IllegalArgumentException("A username is required.");
         }
 
-        User user = new User(UUID.randomUUID().toString(), createUserRequest.username);
-        userService.create(user);
+        userService.create(createUserRequest.username);
     }
 }

@@ -7,7 +7,7 @@ public class YearTest {
 
     @Test
     public void next() {
-        Year year = new Year(2022);
+        var year = new Year(2022);
         year.next();
         Assertions.assertEquals(new Year(2022), year);
         Assertions.assertEquals(new Year(2023), year.next());

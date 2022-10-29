@@ -2,8 +2,8 @@ package fr.esgi.al.tps.classe1.tp20.domain;
 
 import java.util.Objects;
 
-//Entity
-public class User {
+//Root Entity
+public final class User {
 
     private final String id;
     private final String username;

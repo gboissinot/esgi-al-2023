@@ -9,4 +9,6 @@ public interface UserRepository {
     void add(User user);
 
     Optional<User> findById(String id);
+
+    Optional<User> findByUsername(String username);
 }

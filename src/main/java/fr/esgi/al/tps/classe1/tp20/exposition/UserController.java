@@ -1,11 +1,10 @@
 package fr.esgi.al.tps.classe1.tp20.exposition;
 
 import fr.esgi.al.tps.classe1.tp20.domain.Address;
-import fr.esgi.al.tps.classe1.tp20.domain.User;
 import fr.esgi.al.tps.classe1.tp20.domain.UserService;
 
 //Controller
-public class UserController {
+public final class UserController {
 
     private final UserService userService;
 
@@ -19,11 +18,7 @@ public class UserController {
             throw new IllegalArgumentException("A username is required.");
         }
 
-        User user = new User(
-                createUserRequest.id,
-                createUserRequest.username,
-                new Address(createUserRequest.city));
-        userService.create(user);
+        userService.create(createUserRequest.username, createUserRequest.city);
     }
 
     public void changeAddress(String userId, Address newAddress) {

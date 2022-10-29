@@ -1,10 +1,9 @@
 package fr.esgi.al.tps.classe1.tp18.domain;
 
-import fr.esgi.al.tps.classe1.tp18.infrastructure.AddressDataModel;
-import fr.esgi.al.tps.classe1.tp18.infrastructure.UserDataModel;
+import java.util.UUID;
 
 // Application service
-public class UserService {
+public final class UserService {
     private final UserDao userDao;
     private final AddressDao addressDao;
 
@@ -13,12 +12,12 @@ public class UserService {
         this.addressDao = addressDao;
     }
 
-    public void create(User user) {
+    public void create(String username, String city) {
 
-        userDao.create(UserDataModel.create(user));
+        var user = new User(UUID.randomUUID().toString(), username, new Address(city));
+        userDao.create(UserDataModel.of(user));
 
         var address = user.getAddress();
-        addressDao.create(AddressDataModel.create(address));
-
+        addressDao.create(AddressDataModel.of(user.getAddress()));
     }
 }

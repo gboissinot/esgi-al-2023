@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe1.tp18.exposition;
 
 //DTO
-public class CreateUserRequest {
+public final class CreateUserRequest {
 
     public final String username;
     public final String city;

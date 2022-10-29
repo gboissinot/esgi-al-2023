@@ -1,8 +1,9 @@
 package fr.esgi.al.tps.classe1.tp18.infrastructure;
 
 import fr.esgi.al.tps.classe1.tp18.domain.AddressDao;
+import fr.esgi.al.tps.classe1.tp18.domain.AddressDataModel;
 
-public class ConsoleAddressDAO implements AddressDao {
+public final class ConsoleAddressDAO implements AddressDao {
     @Override
     public void find(AddressDataModel address) {
         System.out.println("[ConsoleAddressDAO]- find");

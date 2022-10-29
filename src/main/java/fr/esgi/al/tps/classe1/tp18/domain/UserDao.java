@@ -1,7 +1,5 @@
 package fr.esgi.al.tps.classe1.tp18.domain;
 
-import fr.esgi.al.tps.classe1.tp18.infrastructure.UserDataModel;
-
 public interface UserDao {
 
     void find(UserDataModel user);

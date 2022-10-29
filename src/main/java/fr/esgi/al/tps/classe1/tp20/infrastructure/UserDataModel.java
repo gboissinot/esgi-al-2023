@@ -3,7 +3,7 @@ package fr.esgi.al.tps.classe1.tp20.infrastructure;
 import fr.esgi.al.tps.classe1.tp20.domain.User;
 
 // DTO : a data container for the UserDAO
-public class UserDataModel {
+public final class UserDataModel {
     public final String username;
     public final String city;
 

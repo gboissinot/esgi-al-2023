@@ -1,1 +1,6 @@
-Introduction to a Data model, close to the DAO
+## Description
+- DAO pattern enriched with a data model
+
+## Notes
+- Data model are expressed as DTOs
+- The creation of the data model is th responsibility of the service

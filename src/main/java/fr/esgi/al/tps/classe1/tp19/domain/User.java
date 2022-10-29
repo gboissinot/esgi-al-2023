@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe1.tp19.domain;
 
 //Entity
-public class User {
+public final class User {
 
     private final String id;
     private final String username;

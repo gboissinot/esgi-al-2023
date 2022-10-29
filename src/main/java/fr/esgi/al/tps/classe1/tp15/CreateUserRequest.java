@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.classe1.tp15;
 
 //DTO
-public class CreateUserRequest {
+final class CreateUserRequest {
 
     public final String username;
 

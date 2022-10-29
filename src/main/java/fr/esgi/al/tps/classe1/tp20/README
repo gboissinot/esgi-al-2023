@@ -1,1 +1,12 @@
-Introduction to the repository
+## Description
+- Complete Repository pattern implementation
+
+## Notes
+- The controller is the entry point
+- A unique repository for the Root entity User
+- The repository uses the DIP pattern with its InMemoryUserRepository implementation
+- The Data model is an infrastructure aspect.
+- The repository contains the nextId() method for generating the user identifier : used in the service class
+- The repository is like a enhanced collection with the add() method
+- The repository contains multiple find() methods
+- Find repository methods use Optional

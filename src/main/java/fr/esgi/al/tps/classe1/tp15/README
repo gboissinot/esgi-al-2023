@@ -1,1 +1,7 @@
-First DTO usage with a service (without a controller)
+## Description
+- DTO object associated with a service
+
+## Notes
+- The service is the entry point of the application
+- DTO object as the input parameter for the service
+- The service uses the domain object User : the service has the responsibility to construct the domain object from the DTO object.
