@@ -5,8 +5,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Value from Zip code : "+ ZipCode.of("94140").code());
-        System.out.println("Department from Zip : "+ ZipCode.of("94140").department());
+        System.out.println("Value from Zip code : " + ZipCode.of("94140").code());
+        System.out.println("Department from Zip : " + ZipCode.of("94140").department());
 
         ZipCode zipCode1 = ZipCode.of("94140");
         ZipCode zipCode2 = ZipCode.of("94140");

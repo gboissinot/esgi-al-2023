@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class StubInMemoryUserRepository implements UserRepository {
+final class StubInMemoryUserRepository implements UserRepository {
 
     private final Map<String, User> preConfiguredData = Map.of(
             "1", new User("1", "GREGORY"),

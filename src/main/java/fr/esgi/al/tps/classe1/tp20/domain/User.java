@@ -7,7 +7,7 @@ public class User {
 
     private final String id;
     private final String username;
-    private  Address address;
+    private Address address;
 
     public User(String id, String username, Address address) {
         this.id = id;
@@ -15,8 +15,8 @@ public class User {
         this.address = address;
     }
 
-    public void changeAddress(Address address){
-        this.address=address;
+    public void changeAddress(Address address) {
+        this.address = address;
     }
 
     public String getId() {

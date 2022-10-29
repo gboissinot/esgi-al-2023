@@ -2,7 +2,6 @@ package fr.esgi.al.tps.classe1.tp20.exposition;
 
 import fr.esgi.al.tps.classe1.tp20.domain.Address;
 import fr.esgi.al.tps.classe1.tp20.domain.User;
-import fr.esgi.al.tps.classe1.tp20.domain.UserRepository;
 import fr.esgi.al.tps.classe1.tp20.domain.UserService;
 
 //Controller
@@ -28,6 +27,6 @@ public class UserController {
     }
 
     public void changeAddress(String userId, Address newAddress) {
-        userService.changeAddress(userId,newAddress);
+        userService.changeAddress(userId, newAddress);
     }
 }

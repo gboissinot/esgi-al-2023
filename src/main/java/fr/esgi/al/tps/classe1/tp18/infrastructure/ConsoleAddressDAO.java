@@ -1,6 +1,5 @@
 package fr.esgi.al.tps.classe1.tp18.infrastructure;
 
-import fr.esgi.al.tps.classe1.tp18.domain.Address;
 import fr.esgi.al.tps.classe1.tp18.domain.AddressDao;
 
 public class ConsoleAddressDAO implements AddressDao {

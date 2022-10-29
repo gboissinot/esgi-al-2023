@@ -6,6 +6,6 @@ public class Main {
         colis.cancel();
         colis.cancel();
         colis.cancel();
-        System.out.println("History:"+  colis.history());
+        System.out.println("History:" + colis.history());
     }
 }

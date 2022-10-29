@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe1.tp7;
 
 import java.util.List;
 
-public class MySQLUserRepository implements UserRepository {
+final class MySQLUserRepository implements UserRepository {
     @Override
     public User getById(String id) {
         //TODO Implement me

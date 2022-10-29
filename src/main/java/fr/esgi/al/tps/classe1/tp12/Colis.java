@@ -7,8 +7,8 @@ import java.util.Objects;
 final class Colis {
 
     private final ColisId number;
-    private ColisStatus status;
     private final LocalDateTime createdDate;
+    private ColisStatus status;
 
     private Colis(ColisId number, ColisStatus status, LocalDateTime createdDate) {
         this.number = number;
@@ -17,7 +17,7 @@ final class Colis {
     }
 
     public static Colis create(int number) {
-        return new Colis(new ColisId("#COL"+ number), ColisStatus.IN_PREPARATION, LocalDateTime.now());
+        return new Colis(new ColisId("#COL" + number), ColisStatus.IN_PREPARATION, LocalDateTime.now());
     }
 
     public void markAsDelivered() {

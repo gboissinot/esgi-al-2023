@@ -8,8 +8,8 @@ import java.util.Objects;
 final class Colis {
 
     private final ColisId number;
-    private ColisStatus status;
     private final LocalDateTime createdDate;
+    private ColisStatus status;
     private ColisHistory history;
 
     private Colis(ColisId number, ColisStatus status, LocalDateTime createdDate, ColisHistory history) {

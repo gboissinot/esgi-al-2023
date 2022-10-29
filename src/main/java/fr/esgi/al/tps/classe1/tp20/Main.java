@@ -8,7 +8,6 @@ import fr.esgi.al.tps.classe1.tp20.exposition.UserController;
 import fr.esgi.al.tps.classe1.tp20.infrastructure.InMemoryUserRepository;
 
 import java.util.Optional;
-import java.util.function.Consumer;
 
 public class Main {
 

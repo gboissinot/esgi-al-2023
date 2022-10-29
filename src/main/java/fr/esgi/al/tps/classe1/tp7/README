@@ -1,0 +1,7 @@
+## Description
+- DIP and DI illustration with the repository pattern
+
+## Notes
+- A Service object uses a Repository object through an abstraction (DIP)
+- The repository interface has several implementations : MongoDB, MySQL, InMemory, Stub
+- The chosen implementation is injected (DI) at the wiring step in the Main

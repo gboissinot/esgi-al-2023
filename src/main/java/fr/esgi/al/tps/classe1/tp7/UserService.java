@@ -2,7 +2,7 @@ package fr.esgi.al.tps.classe1.tp7;
 
 import java.util.List;
 
-public class UserService {
+public final class UserService {
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
