@@ -8,8 +8,8 @@ final class UserService {
         this.userDao = userDao;
     }
 
-    void create(UserRequest userRequest) {
-        User user = new User(userRequest.lastname, userRequest.firstname);
+    void create(CreateUserRequest createUserRequest) {
+        User user = new User(createUserRequest.lastname, createUserRequest.firstname);
         userDao.create(user);
     }
 }

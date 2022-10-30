@@ -1,0 +1,6 @@
+## Description
+- ServiceLocation implementation examples
+
+## Notes
+- ServiceLocator use a key as identifier
+- ServiceLocatorSingleton is not finalized

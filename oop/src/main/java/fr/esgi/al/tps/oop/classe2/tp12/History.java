@@ -3,22 +3,23 @@ package fr.esgi.al.tps.oop.classe2.tp12;
 import java.util.ArrayList;
 import java.util.List;
 
+//VO
 final class History {
 
-    private final List<Status> history;
+    private final List<ColisStatus> history;
 
-    private History(List<Status> history) {
+    private History(List<ColisStatus> history) {
         this.history = history;
     }
 
-    public static History create(Status initialStatus) {
-        final ArrayList<Status> list = new ArrayList<>();
+    public static History create(ColisStatus initialStatus) {
+        final ArrayList<ColisStatus> list = new ArrayList<>();
         list.add(initialStatus);
         return new History(list);
     }
 
-    public History addStatus(Status status) {
-        List<Status> statusList = new ArrayList<>(history);
+    public History add(ColisStatus status) {
+        List<ColisStatus> statusList = new ArrayList<>(history);
         statusList.add(status);
         return new History(statusList);
     }

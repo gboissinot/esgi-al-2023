@@ -5,9 +5,8 @@ import java.util.List;
 
 final class Player {
 
-    private Position readPosition;
-
     private final List<Event> recordedEvents;
+    private Position readPosition;
 
     public Player(Position intialPosition) {
         this.recordedEvents = new ArrayList<>();

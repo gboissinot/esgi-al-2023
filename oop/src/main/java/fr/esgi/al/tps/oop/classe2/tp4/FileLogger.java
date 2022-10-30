@@ -1,7 +1,5 @@
 package fr.esgi.al.tps.oop.classe2.tp4;
 
-import fr.esgi.al.tps.oop.classe2.tp3.Logger;
-
 import java.io.FileWriter;
 import java.io.IOException;
 

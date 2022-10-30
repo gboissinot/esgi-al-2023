@@ -6,12 +6,10 @@ import fr.esgi.al.tps.oop.classe1.tp17.exposition.UserController;
 import fr.esgi.al.tps.oop.classe1.tp17.infrastructure.ConsoleAddressDAO;
 import fr.esgi.al.tps.oop.classe1.tp17.infrastructure.ConsoleUserDao;
 
-
 public class Main {
 
     public static void main(String[] args) {
-
-        UserController userController =
+        var userController =
                 new UserController(
                         new UserService(
                                 new ConsoleUserDao(), new ConsoleAddressDAO()));

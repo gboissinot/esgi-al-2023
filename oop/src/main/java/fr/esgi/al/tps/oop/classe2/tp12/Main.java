@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         Colis colis = Colis.create(ColisNumber.of(123));
-        colis.markAsDelivered();
+        colis.deliver();
         final History history = colis.history();
         System.out.println(history);
     }

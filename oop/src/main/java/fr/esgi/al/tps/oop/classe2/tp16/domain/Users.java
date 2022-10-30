@@ -5,6 +5,8 @@ import fr.esgi.al.tps.oop.classe2.tp16.domain.model.User;
 //Repository
 public interface Users {
     void add(User user);
+
     void delete(User user);
+
     User getById(String id);
 }

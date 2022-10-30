@@ -11,7 +11,8 @@ public final class UserService {
         this.userDao = userDao;
     }
 
-    public void create(User user) {
+    public void create(String lastname, String firstname) {
+        var user = new User(lastname, firstname);
         userDao.create(user);
     }
 }

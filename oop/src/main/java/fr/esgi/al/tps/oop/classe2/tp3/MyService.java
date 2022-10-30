@@ -1,6 +1,6 @@
 package fr.esgi.al.tps.oop.classe2.tp3;
 
-public final class MyService {
+final class MyService {
 
     private final Logger logger;
 

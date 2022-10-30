@@ -1,5 +1,6 @@
 package fr.esgi.al.tps.oop.classe2.tp3;
 
+@FunctionalInterface
 public interface Logger {
     void log(String message);
 

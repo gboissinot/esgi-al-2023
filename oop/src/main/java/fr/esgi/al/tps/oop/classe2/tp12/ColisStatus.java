@@ -1,5 +1,6 @@
 package fr.esgi.al.tps.oop.classe2.tp12;
 
-public enum Status {
+//VO
+enum ColisStatus {
     IN_PREPARATION, DELIVERED, CANCELED;
 }

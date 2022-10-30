@@ -1,0 +1,7 @@
+## Description
+- Complete polymorphism and dependency injection illustration
+
+## Notes
+- Logger and Formatter are functional interfaces
+- FileLogger is a first implementation (not optimized)
+- Default or normal implementation can be named "Default"

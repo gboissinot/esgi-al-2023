@@ -2,7 +2,7 @@ package fr.esgi.al.tps.oop.classe2.tp6;
 
 import java.util.UUID;
 
-public final class User {
+final class User {
 
     private final String id;
     private final String lastname;

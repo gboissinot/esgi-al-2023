@@ -1,6 +1,7 @@
 package fr.esgi.al.tps.oop.classe2.tp11;
 
-public final class ColisNumber {
+//VO ID
+final class ColisNumber {
 
     private final String value;
 

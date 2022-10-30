@@ -1,7 +1,7 @@
 package fr.esgi.al.tps.oop.classe2.tp2;
 
 
-public class DefaultCommandBus implements CommandBus {
+final class DefaultCommandBus implements CommandBus {
     @Override
     public void execute(Command command) {
         try {

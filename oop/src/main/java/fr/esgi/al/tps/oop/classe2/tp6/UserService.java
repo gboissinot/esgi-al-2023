@@ -1,10 +1,10 @@
 package fr.esgi.al.tps.oop.classe2.tp6;
 
-public class UserController {
+final class UserService {
 
     private final UserRepository userRepository;
 
-    public UserController(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

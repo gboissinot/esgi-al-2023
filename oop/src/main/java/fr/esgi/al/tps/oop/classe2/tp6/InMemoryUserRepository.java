@@ -3,7 +3,7 @@ package fr.esgi.al.tps.oop.classe2.tp6;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InMemoryUserRepository implements UserRepository {
+final class InMemoryUserRepository implements UserRepository {
 
     private final Map<String, User> users = new HashMap();
 

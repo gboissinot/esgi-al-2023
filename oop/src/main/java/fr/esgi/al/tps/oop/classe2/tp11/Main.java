@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         final Colis colis = Colis.create(ColisNumber.of(123));
-        colis.markAsDelivered();
+        colis.deliver();
         System.out.println(colis);
     }
 }

@@ -5,8 +5,8 @@ import java.util.Objects;
 public final class User {
 
     private final String id;
-    private  String lastname;
     private final String firstname;
+    private String lastname;
 
     public User(String id, String lastname, String firstname) {
         this.id = id;
@@ -41,6 +41,6 @@ public final class User {
     }
 
     public void changeLastName(String newLastName) {
-        this.lastname=newLastName;
+        this.lastname = newLastName;
     }
 }

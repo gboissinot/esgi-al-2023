@@ -6,9 +6,8 @@ import java.util.Objects;
 
 final class Player {
 
-    private Position position;
-
     private final List<Event> recordedEvents;
+    private Position position;
 
     public Player(Position position) {
         this.position = position;

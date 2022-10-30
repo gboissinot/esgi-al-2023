@@ -1,0 +1,8 @@
+## Description
+- Dependency injection illustration
+
+## Notes
+- MyService is a service object with a logger as a dependency
+- ServiceLocator pattern enable to locate objects : it has been deprecated by dependency injection
+- A Logger endpoint with multiple implementations : NullLogger, DefaultLogger, MySecondLogger
+- NullLogger is called a dummy object

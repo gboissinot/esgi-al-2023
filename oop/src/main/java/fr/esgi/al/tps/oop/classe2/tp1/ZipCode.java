@@ -51,7 +51,7 @@ final class ZipCode {
         return sb.append(digit1).append(digit2).append(digit3).append(digit4).append(digit5).toString();
     }
 
-    public String departement() {
+    public String department() {
         StringBuilder sb = new StringBuilder();
         return sb.append(digit1).append(digit2).toString();
     }

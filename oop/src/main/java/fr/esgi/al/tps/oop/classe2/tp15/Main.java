@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         var userRequest = new UserRequest("BOISSINOT", "GREGORY");
-        final UserController userController = new UserController(new UserService(new MySQLUserDao()));
+        var userController = new UserController(new UserService(new MySQLUserDao()));
         userController.createUser(userRequest);
     }
 }

@@ -13,7 +13,7 @@ final class Player {
     }
 
     public void moveLeft(int steps) {
-        this.recordedEvents.add(new PlayerMoved(steps,0));
+        this.recordedEvents.add(new PlayerMoved(steps, 0));
     }
 
     public List<Event> recordedEvents() {

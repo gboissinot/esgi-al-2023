@@ -1,1 +1,7 @@
-First DTO sample
+## Description
+- DTO first implementation
+
+## Notes
+- A DTO has no business rules
+- All DTOs properties are accessible
+- ScheduleMeetup : properties are directly public and we add public constructor to facilitate the object creation
