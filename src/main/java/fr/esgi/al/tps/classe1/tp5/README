@@ -3,5 +3,5 @@
 
 ## Notes
 - ServiceLocator1 uses a logical service name as the registry key
-- ServiceLocator2 uses the class name as the registry key
-- ServiceLocator3 is the ServiceLocator2 version with the Optional function for the get method
+- ServiceLocator2 uses the service class name as the registry key
+- ServiceLocator3 is the ServiceLocator2 version with the Optional for get method

@@ -5,7 +5,7 @@
 - An object has a state and behaviors.
 - All properties are final.
 - We use a named constructor though the usage of the static factory method patten.
-And the constructor as the private visibility.
+- Constructor as the private visibility.
 - The named constructor of the ZipCode offers the opportunity of make additional code such as caching for removing the creation of new object if an object with the same value exists.
 - A toString() method is generated for each object: useful when the objet is logged.
 - ZipCode object illustrates the difference between the objet state representation

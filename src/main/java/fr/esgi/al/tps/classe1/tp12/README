@@ -6,4 +6,4 @@
 - Colis has the change status property
 - Colis equality is done on its unique identifier
 - ColisStatus can be considered as a Value Object
-- ColisId is Value Object ID
+- ColisId is a Value Object ID

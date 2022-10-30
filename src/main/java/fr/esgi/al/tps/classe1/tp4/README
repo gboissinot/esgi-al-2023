@@ -2,7 +2,7 @@
 - Complete polymorphism and dependency injection illustration
 
 ## Notes
-- Function interfaces are privileged
+- Logger and Formatter are functional interfaces
 - Implementation can be named "Default...", "Null..."
 - NullFormmatter is a dummy object
 - FileLogger is a first implementation (not optimized)
