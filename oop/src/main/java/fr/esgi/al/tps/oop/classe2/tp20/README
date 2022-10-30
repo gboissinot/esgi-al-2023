@@ -1,0 +1,6 @@
+## Description
+- Complete event implementation
+
+## Notes
+- Player object uses only events
+- PlayerMoved state doesn't contains the Position object

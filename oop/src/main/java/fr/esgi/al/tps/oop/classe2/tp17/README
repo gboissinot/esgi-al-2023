@@ -1,0 +1,9 @@
+## Description
+- Objects encapsulation issues for testing
+
+## Notes
+- Position is a ValueObject
+- Player has a state position and it is exposed through the currentPosition() method
+- Testing the player object has two main techniques
+    - using the currentPosition() method
+    - wrapping the Position object by creating a new current Player object

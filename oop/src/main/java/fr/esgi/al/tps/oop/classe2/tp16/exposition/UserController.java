@@ -1,6 +1,5 @@
 package fr.esgi.al.tps.oop.classe2.tp16.exposition;
 
-import fr.esgi.al.tps.oop.classe2.tp16.domain.model.User;
 import fr.esgi.al.tps.oop.classe2.tp16.services.UserService;
 
 public final class UserController {
@@ -10,9 +9,13 @@ public final class UserController {
         this.userService = userService;
     }
 
-    public void createUser(UserRequest userRequest) {
-        User user = new User(userRequest.lastname, userRequest.lastname, userRequest.firstname);
-        userService.create(user);
+    public void createUser(CreateUserRequest createUserRequest) {
+        //DTO Validation
+        if (createUserRequest.lastname == null) {
+            throw new IllegalArgumentException("A user lastname is required.");
+        }
+
+        userService.create(createUserRequest.lastname, createUserRequest.firstname);
     }
 
     public void changeLastName(ChangeUserRequest userRequest) {

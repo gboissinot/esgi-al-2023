@@ -11,7 +11,8 @@ public final class UserService {
         this.users = users;
     }
 
-    public void create(User user) {
+    public void create(String lastname, String firstname) {
+        User user = new User(lastname, lastname, firstname);
         users.add(user);
     }
 

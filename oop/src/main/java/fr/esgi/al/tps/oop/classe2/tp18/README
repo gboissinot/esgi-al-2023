@@ -1,0 +1,9 @@
+## Description
+- First event introduction
+
+## Notes
+- Command methods player generates an event (a fact - immutable object)
+- A PlayerMoved event is generated for each moveLeft() is called
+- Events are recorded in the Player object
+- recordedEvents() retrieves the generated events
+- Events enables you testing the object

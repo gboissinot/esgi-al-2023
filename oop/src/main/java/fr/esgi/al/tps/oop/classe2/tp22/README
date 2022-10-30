@@ -1,0 +1,7 @@
+## Description
+- Fourth and complete event implementation
+
+## Notes
+- Player object uses only events
+- PlayerReport is introduced and is responsible to the read model
+- Position object becomes a collaborator object to the PlayerReport

@@ -1,0 +1,8 @@
+## Description
+- Third event implementation
+
+## Notes
+- Player object uses only events
+- Position object becomes a read only object
+- Position object is computed in the currentPosition() : all events are replayed.
+- The read logical implementation is done directly into the Player object
