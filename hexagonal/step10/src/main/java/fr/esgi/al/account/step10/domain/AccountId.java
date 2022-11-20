@@ -1,17 +1,22 @@
 package fr.esgi.al.account.step10.domain;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public final class AccountId {
 
-    private final String value;
+    private final UUID value;
 
-    private AccountId(String value) {
+    private AccountId(UUID value) {
         this.value = value;
     }
 
-    public static AccountId of(String value) {
+    public static AccountId of(UUID value) {
         return new AccountId(value);
+    }
+
+    public String value() {
+        return value.toString();
     }
 
     @Override
@@ -25,5 +30,12 @@ public final class AccountId {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "AccountId{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }

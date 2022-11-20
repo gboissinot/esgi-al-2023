@@ -17,7 +17,7 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
 
     @Override
     public AccountId nextId() {
-        return AccountId.of(UUID.randomUUID().toString());
+        return AccountId.of(UUID.randomUUID());
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/accounts")
@@ -36,15 +37,15 @@ public class AccountWebController {
     @PostMapping(value = "/transfer", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void transfer(@RequestBody @Valid TransferAccountRequest transferAccountRequest) {
         commandBus.post(new SendMoneyCommand(
-                AccountId.of(transferAccountRequest.sourceAccountId),
-                AccountId.of(transferAccountRequest.targetAccountId),
+                AccountId.of(UUID.fromString(transferAccountRequest.sourceAccountId)),
+                AccountId.of(UUID.fromString(transferAccountRequest.targetAccountId)),
                 Money.of(transferAccountRequest.amount)
         ));
     }
 
     @GetMapping
     public GetBalanceResponse getBalance(@RequestParam String accountId) {
-        var balance = (Money) queryBus.post(new AccountBalanceQuery(AccountId.of(accountId)));
+        var balance = (Money) queryBus.post(new AccountBalanceQuery(AccountId.of(UUID.fromString(accountId))));
         return new GetBalanceResponse(balance.value());
     }
 }

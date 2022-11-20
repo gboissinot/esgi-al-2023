@@ -15,7 +15,7 @@ public final class StubAccountRepository implements AccountRepository {
 
     @Override
     public AccountId nextId() {
-        return AccountId.of(UUID.randomUUID().toString());
+        return AccountId.of(UUID.randomUUID());
     }
 
     @Override
