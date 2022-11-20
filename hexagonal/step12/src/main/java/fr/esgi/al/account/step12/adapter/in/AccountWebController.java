@@ -15,6 +15,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/accounts")
+@SuppressWarnings("all")
 public class AccountWebController {
 
     private final CommandBus commandBus;

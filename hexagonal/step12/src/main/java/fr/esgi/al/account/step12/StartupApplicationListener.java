@@ -15,6 +15,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
+@SuppressWarnings("all")
 public class StartupApplicationListener implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CommandBus commandBus;
