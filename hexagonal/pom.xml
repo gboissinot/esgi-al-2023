@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -10,6 +10,21 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hexagonal</artifactId>
+    <artifactId>hexagonal-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>step1</module>
+        <module>step2</module>
+        <module>step3</module>
+        <module>step4</module>
+        <module>step5</module>
+        <module>step6</module>
+        <module>step7</module>
+        <module>step8</module>
+        <module>step9</module>
+        <module>step10</module>
+        <module>step11</module>
+    </modules>
 
 </project>
