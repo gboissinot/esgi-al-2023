@@ -5,7 +5,7 @@ import javax.validation.Validator;
 import java.util.Map;
 import java.util.Set;
 
-class DefaultQueryBus<Q extends Query<Q>> implements QueryBus<Q> {
+final class DefaultQueryBus<Q extends Query<Q>> implements QueryBus<Q> {
 
     private final Map<Class<Q>, QueryHandler> registry;
     private final Validator validator;

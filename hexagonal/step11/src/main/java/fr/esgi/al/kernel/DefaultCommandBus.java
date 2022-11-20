@@ -5,7 +5,7 @@ import javax.validation.Validator;
 import java.util.Map;
 import java.util.Set;
 
-class DefaultCommandBus<C extends Command<C>> implements CommandBus<C> {
+final class DefaultCommandBus<C extends Command<C>> implements CommandBus<C> {
 
     private final Map<Class<C>, CommandHandler> registry;
     private final Validator validator;
