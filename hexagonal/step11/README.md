@@ -14,3 +14,4 @@
 - Command use cases follows the CommandHandler interface
 - Query use case follows the QueryHandler interface
 - Command and Query are only extension point. The validate() method is deleted.
+- Bean validations is activated into the query and command bus

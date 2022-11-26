@@ -13,19 +13,11 @@ public final class Account {
     }
 
     public void deposit(Money money) {
-        validateTransfer(money);
         this.balance = this.balance.add(money);
     }
 
     public void withdraw(Money money) {
-        validateTransfer(money);
         this.balance = this.balance.minus(money);
-    }
-
-    private void validateTransfer(Money money) {
-        if (money.value() <= 0) {
-            throw new AccountException();
-        }
     }
 
     public AccountId id() {

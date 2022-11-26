@@ -23,13 +23,17 @@ public final class Account {
     }
 
     private void validateTransfer(Money money) {
-        if (money.value() <= 0) {
-            throw new AccountException();
+        if (!money.isPositive()) {
+            throw AccountException.create();
         }
     }
 
     public AccountId id() {
         return accountId;
+    }
+
+    public Money balance() {
+        return balance;
     }
 
     @Override

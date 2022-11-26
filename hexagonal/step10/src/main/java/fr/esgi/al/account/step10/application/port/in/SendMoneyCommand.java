@@ -20,5 +20,8 @@ public class SendMoneyCommand implements Command<SendMoneyCommand> {
         this.targetAccountId = targetAccountId;
         this.amount = amount;
         validate(this);
+        if (!this.amount.isPositive()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

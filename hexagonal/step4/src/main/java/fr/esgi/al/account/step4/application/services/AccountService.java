@@ -7,6 +7,8 @@ import fr.esgi.al.account.step4.domain.AccountConfiguration;
 import fr.esgi.al.account.step4.domain.AccountId;
 import fr.esgi.al.account.step4.domain.Money;
 
+import java.util.Objects;
+
 public final class AccountService {
 
     private final AccountConfiguration accountConfiguration;
@@ -26,9 +28,7 @@ public final class AccountService {
 
     public void sendMoney(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
 
-        if (mayNotTransfer(amount)) {
-            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
-        }
+        checkInput(sourceAccountId, targetAccountId, amount);
 
         var sourceAccount = accountRepository.findById(sourceAccountId);
         var targetAccount = accountRepository.findById(targetAccountId);
@@ -38,6 +38,19 @@ public final class AccountService {
 
         accountRepository.save(sourceAccount);
         accountRepository.save(targetAccount);
+    }
+
+    private void checkInput(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
+        Objects.requireNonNull(sourceAccountId);
+        Objects.requireNonNull(targetAccountId);
+        Objects.requireNonNull(amount);
+        if (!amount.isPositive()) {
+            throw AccountApplicationException.wrongTransferMoney(amount);
+        }
+
+        if (mayNotTransfer(amount)) {
+            throw AccountApplicationException.exceededThreshold(sourceAccountId, targetAccountId, amount);
+        }
     }
 
     private boolean mayNotTransfer(Money amount) {

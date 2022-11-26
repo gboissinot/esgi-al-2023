@@ -17,21 +17,11 @@ public final class AccountController {
     }
 
     public AccountId create(Money initialAmount) {
-        try {
-            return createAccountUseCase.createAccount(new CreateAccountCommand(initialAmount));
-        } catch (Exception e) {
-            System.err.printf("Can't create an account.");
-            throw new RuntimeException();
-        }
+        return createAccountUseCase.createAccount(new CreateAccountCommand(initialAmount));
     }
 
     public void transfer(AccountId source, AccountId target, Money amount) {
-        try {
-            sendMoneyUseCase.sendMoney(new SendMoneyCommand(source, target, amount));
-        } catch (Exception e) {
-            System.err.printf("Unable to transfer money between the two accounts. Cause '%s'%n", e.getMessage());
-            throw new RuntimeException();
-        }
+        sendMoneyUseCase.sendMoney(new SendMoneyCommand(source, target, amount));
     }
 
     public Money getBalance(AccountId accountId) {

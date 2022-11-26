@@ -1,8 +1,8 @@
 package fr.esgi.al.account.step3.adapter.out;
 
-import fr.esgi.al.account.step3.application.AccountApplicationException;
 import fr.esgi.al.account.step3.application.port.out.AccountRepository;
 import fr.esgi.al.account.step3.domain.Account;
+import fr.esgi.al.account.step3.domain.AccountException;
 import fr.esgi.al.account.step3.domain.AccountId;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public final class InMemoryAccountRepository implements AccountRepository {
     public Account findById(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
-                    throw AccountApplicationException.notFoundAccountId(accountId);
+                    throw AccountException.notFoundAccountId(accountId);
                 });
     }
 

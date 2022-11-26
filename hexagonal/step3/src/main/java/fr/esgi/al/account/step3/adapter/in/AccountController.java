@@ -13,11 +13,6 @@ public final class AccountController {
     }
 
     public void transfer(AccountId source, AccountId target, Money money) {
-        try {
-            accountService.sendMoney(source, target, money);
-        } catch (Exception e) {
-            System.err.printf("Unable to transfer money between the two accounts. Cause '%s'%n", e.getMessage());
-            throw new RuntimeException();
-        }
+        accountService.sendMoney(source, target, money);
     }
 }

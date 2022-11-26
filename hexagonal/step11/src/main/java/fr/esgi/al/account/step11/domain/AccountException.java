@@ -1,10 +1,11 @@
 package fr.esgi.al.account.step11.domain;
 
 public class AccountException extends RuntimeException {
-    public AccountException() {
+    private AccountException(String message) {
+        super(message);
     }
 
-    public AccountException(String message) {
-        super(message);
+    public static AccountException notFoundAccountId(AccountId accountId) {
+        return new AccountException(String.format("%s not found.", accountId.value()));
     }
 }

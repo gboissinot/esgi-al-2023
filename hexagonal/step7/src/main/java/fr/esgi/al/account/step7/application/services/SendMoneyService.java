@@ -24,7 +24,7 @@ public class SendMoneyService implements SendMoneyUseCase {
         var targetAccountId = sendMoneyCommand.targetAccountId;
         var amount = sendMoneyCommand.amount;
         if (mayNotTransfer(amount)) {
-            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
+            throw AccountApplicationException.exceededThreshold(sourceAccountId, targetAccountId, amount);
         }
 
         var sourceAccount = accountRepository.findById(sourceAccountId);

@@ -2,8 +2,8 @@ package fr.esgi.al.account.step4.adapter.out;
 
 import fr.esgi.al.account.step4.application.port.out.AccountRepository;
 import fr.esgi.al.account.step4.domain.Account;
+import fr.esgi.al.account.step4.domain.AccountException;
 import fr.esgi.al.account.step4.domain.AccountId;
-import fr.esgi.al.account.step4.domain.AccountNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public final class InMemoryAccountRepository implements AccountRepository {
     public Account findById(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
-                    throw new AccountNotFoundException();
+                    throw AccountException.notFoundAccountId(accountId);
                 });
     }
 

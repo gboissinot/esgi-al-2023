@@ -25,4 +25,8 @@ public final class Money {
     public double value() {
         return amount.doubleValue();
     }
+
+    public boolean isPositive() {
+        return amount.intValue() > 0;
+    }
 }

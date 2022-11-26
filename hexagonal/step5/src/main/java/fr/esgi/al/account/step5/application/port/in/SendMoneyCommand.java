@@ -15,5 +15,8 @@ public final class SendMoneyCommand {
         this.sourceAccountId = Objects.requireNonNull(sourceAccountId);
         this.targetAccountId = Objects.requireNonNull(targetAccountId);
         this.amount = Objects.requireNonNull(amount);
+        if (!this.amount.isPositive()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

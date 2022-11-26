@@ -15,20 +15,10 @@ public final class AccountController {
     }
 
     public AccountId create(Money initialAmount) {
-        try {
-            return accountService.createAccount(new CreateAccountCommand(initialAmount));
-        } catch (Exception e) {
-            System.err.printf("Can't create an account.");
-            throw new RuntimeException();
-        }
+        return accountService.createAccount(new CreateAccountCommand(initialAmount));
     }
 
     public void transfer(AccountId source, AccountId target, Money amount) {
-        try {
-            accountService.sendMoney(new SendMoneyCommand(source, target, amount));
-        } catch (Exception e) {
-            System.err.printf("Unable to transfer money between the two accounts. Cause '%s'%n", e.getMessage());
-            throw new RuntimeException();
-        }
+        accountService.sendMoney(new SendMoneyCommand(source, target, amount));
     }
 }
