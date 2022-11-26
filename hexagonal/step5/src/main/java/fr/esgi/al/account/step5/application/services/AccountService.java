@@ -1,7 +1,7 @@
 package fr.esgi.al.account.step5.application.services;
 
 import fr.esgi.al.account.step5.application.AccountApplicationException;
-import fr.esgi.al.account.step5.application.port.in.CreeateAccountCommand;
+import fr.esgi.al.account.step5.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step5.application.port.in.SendMoneyCommand;
 import fr.esgi.al.account.step5.application.port.out.AccountRepository;
 import fr.esgi.al.account.step5.domain.Account;
@@ -19,9 +19,9 @@ public final class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public AccountId createAccount(CreeateAccountCommand creeateAccountCommand) {
+    public AccountId createAccount(CreateAccountCommand createAccountCommand) {
         var accountId = accountRepository.nextId();
-        var account = new Account(accountId, creeateAccountCommand.initialMoney);
+        var account = new Account(accountId, createAccountCommand.initialMoney);
         accountRepository.save(account);
         return accountId;
     }

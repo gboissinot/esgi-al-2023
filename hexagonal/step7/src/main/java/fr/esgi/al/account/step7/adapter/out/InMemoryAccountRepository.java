@@ -19,7 +19,7 @@ public final class InMemoryAccountRepository implements AccountRepository {
     }
 
     @Override
-    public Account findBy(AccountId accountId) {
+    public Account findById(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
                     throw AccountApplicationException.notFoundAccountId(accountId);

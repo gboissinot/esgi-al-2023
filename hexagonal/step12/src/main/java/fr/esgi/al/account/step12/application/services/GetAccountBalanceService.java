@@ -15,7 +15,7 @@ public class GetAccountBalanceService implements GetAccountBalanceUseCase {
 
     @Override
     public Money handle(AccountBalanceQuery query) {
-        var account = loadAccountPort.loadAccount(query.accountId);
+        var account = loadAccountPort.load(query.accountId);
         return account.balance();
     }
 }

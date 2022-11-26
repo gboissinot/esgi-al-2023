@@ -1,6 +1,5 @@
 package fr.esgi.al.account.step4.adapter.in;
 
-import fr.esgi.al.account.step4.application.AccountApplicationException;
 import fr.esgi.al.account.step4.application.services.AccountService;
 import fr.esgi.al.account.step4.domain.AccountId;
 import fr.esgi.al.account.step4.domain.Money;
@@ -16,7 +15,7 @@ public final class AccountController {
     public AccountId create(Money initialAmount) {
         try {
             return accountService.createAccount(initialAmount);
-        } catch (AccountApplicationException e) {
+        } catch (Exception e) {
             System.err.println("Can't create an account.");
             throw new RuntimeException();
         }
@@ -25,7 +24,7 @@ public final class AccountController {
     public void transfer(AccountId source, AccountId target, Money money) {
         try {
             accountService.sendMoney(source, target, money);
-        } catch (AccountApplicationException e) {
+        } catch (Exception e) {
             System.err.printf("Unable to transfer money between the two accounts. Cause '%s'%n", e.getMessage());
             throw new RuntimeException();
         }

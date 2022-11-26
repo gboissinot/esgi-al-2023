@@ -4,5 +4,5 @@ import fr.esgi.al.account.step9.domain.Account;
 import fr.esgi.al.account.step9.domain.AccountId;
 
 public interface LoadAccountPort {
-    Account loadAccount(AccountId accountId);
+    Account load(AccountId accountId);
 }

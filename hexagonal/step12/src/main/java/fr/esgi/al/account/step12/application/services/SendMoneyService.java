@@ -1,10 +1,10 @@
 package fr.esgi.al.account.step12.application.services;
 
+import fr.esgi.al.account.step12.application.AccountApplicationException;
 import fr.esgi.al.account.step12.application.port.in.SendMoneyCommand;
 import fr.esgi.al.account.step12.application.port.in.SendMoneyUseCase;
 import fr.esgi.al.account.step12.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step12.application.port.out.UpdateAccountStatePort;
-import fr.esgi.al.account.step12.domain.Account;
 import fr.esgi.al.account.step12.domain.AccountConfiguration;
 import fr.esgi.al.account.step12.domain.Money;
 
@@ -21,15 +21,17 @@ public class SendMoneyService implements SendMoneyUseCase {
     }
 
     @Override
-    public Void handle(SendMoneyCommand command) {
+    public Void handle(SendMoneyCommand sendMoneyCommand) {
 
-        var amount = command.amount;
+        var sourceAccountId = sendMoneyCommand.sourceAccountId;
+        var targetAccountId = sendMoneyCommand.targetAccountId;
+        var amount = sendMoneyCommand.amount;
         if (mayNotTransfer(amount)) {
-            throw new RuntimeException();
+            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
         }
 
-        final Account sourceAccount = loadAccountPort.loadAccount(command.sourceAccountId);
-        final Account targetAccount = loadAccountPort.loadAccount(command.targetAccountId);
+        var sourceAccount = loadAccountPort.load(sourceAccountId);
+        var targetAccount = loadAccountPort.load(targetAccountId);
 
         sourceAccount.withdraw(amount);
         targetAccount.deposit(amount);

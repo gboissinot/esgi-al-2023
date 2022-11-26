@@ -1,6 +1,5 @@
 package fr.esgi.al.account.step3.adapter.in;
 
-import fr.esgi.al.account.step3.application.AccountApplicationException;
 import fr.esgi.al.account.step3.application.services.AccountService;
 import fr.esgi.al.account.step3.domain.AccountId;
 import fr.esgi.al.account.step3.domain.Money;
@@ -16,7 +15,7 @@ public final class AccountController {
     public void transfer(AccountId source, AccountId target, Money money) {
         try {
             accountService.sendMoney(source, target, money);
-        } catch (AccountApplicationException e) {
+        } catch (Exception e) {
             System.err.printf("Unable to transfer money between the two accounts. Cause '%s'%n", e.getMessage());
             throw new RuntimeException();
         }

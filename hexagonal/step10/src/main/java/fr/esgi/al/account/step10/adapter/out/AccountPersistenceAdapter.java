@@ -26,7 +26,7 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     }
 
     @Override
-    public Account loadAccount(AccountId accountId) {
+    public Account load(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
                     throw AccountApplicationException.notFoundAccountId(accountId);
