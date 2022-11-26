@@ -1,7 +1,7 @@
 package fr.esgi.al.account.step3.application.services;
 
+import fr.esgi.al.account.step3.application.AccountApplicationException;
 import fr.esgi.al.account.step3.application.port.out.AccountRepository;
-import fr.esgi.al.account.step3.domain.Account;
 import fr.esgi.al.account.step3.domain.AccountConfiguration;
 import fr.esgi.al.account.step3.domain.AccountId;
 import fr.esgi.al.account.step3.domain.Money;
@@ -19,11 +19,11 @@ public final class AccountService {
     public void sendMoney(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
 
         if (mayNotTransfer(amount)) {
-            throw new RuntimeException();
+            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
         }
 
-        final Account sourceAccount = accountRepository.findBy(sourceAccountId);
-        final Account targetAccount = accountRepository.findBy(targetAccountId);
+        var sourceAccount = accountRepository.findById(sourceAccountId);
+        var targetAccount = accountRepository.findById(targetAccountId);
 
         sourceAccount.withdraw(amount);
         targetAccount.deposit(amount);
@@ -33,6 +33,6 @@ public final class AccountService {
     }
 
     private boolean mayNotTransfer(Money amount) {
-        return accountConfiguration.transferThreshold() >= amount.value();
+        return accountConfiguration.transferThreshold() < amount.value();
     }
 }

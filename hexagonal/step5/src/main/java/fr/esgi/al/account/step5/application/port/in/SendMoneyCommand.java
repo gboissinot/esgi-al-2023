@@ -3,7 +3,7 @@ package fr.esgi.al.account.step5.application.port.in;
 import fr.esgi.al.account.step5.domain.AccountId;
 import fr.esgi.al.account.step5.domain.Money;
 
-public class SendMoneyCommand {
+public final class SendMoneyCommand {
 
     public final AccountId sourceAccountId;
     public final AccountId targetAccountId;

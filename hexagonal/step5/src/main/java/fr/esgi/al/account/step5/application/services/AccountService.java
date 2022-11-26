@@ -1,10 +1,12 @@
 package fr.esgi.al.account.step5.application.services;
 
+import fr.esgi.al.account.step5.application.AccountApplicationException;
 import fr.esgi.al.account.step5.application.port.in.CreeateAccountCommand;
 import fr.esgi.al.account.step5.application.port.in.SendMoneyCommand;
 import fr.esgi.al.account.step5.application.port.out.AccountRepository;
 import fr.esgi.al.account.step5.domain.Account;
 import fr.esgi.al.account.step5.domain.AccountConfiguration;
+import fr.esgi.al.account.step5.domain.AccountId;
 import fr.esgi.al.account.step5.domain.Money;
 
 public final class AccountService {
@@ -17,21 +19,24 @@ public final class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public void createAccount(CreeateAccountCommand creeateAccountCommand) {
+    public AccountId createAccount(CreeateAccountCommand creeateAccountCommand) {
         var accountId = accountRepository.nextId();
         var account = new Account(accountId, creeateAccountCommand.initialMoney);
         accountRepository.save(account);
+        return accountId;
     }
 
     public void sendMoney(SendMoneyCommand sendMoneyCommand) {
 
+        var sourceAccountId = sendMoneyCommand.sourceAccountId;
+        var targetAccountId = sendMoneyCommand.targetAccountId;
         var amount = sendMoneyCommand.amount;
         if (mayNotTransfer(amount)) {
-            throw new RuntimeException();
+            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
         }
 
-        final Account sourceAccount = accountRepository.findBy(sendMoneyCommand.sourceAccountId);
-        final Account targetAccount = accountRepository.findBy(sendMoneyCommand.targetAccountId);
+        var sourceAccount = accountRepository.findById(sourceAccountId);
+        var targetAccount = accountRepository.findById(targetAccountId);
 
         sourceAccount.withdraw(amount);
         targetAccount.deposit(amount);

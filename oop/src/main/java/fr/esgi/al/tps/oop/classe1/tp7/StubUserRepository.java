@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-final class StubInMemoryUserRepository implements UserRepository {
+final class StubUserRepository implements UserRepository {
 
     private final Map<String, User> preConfiguredData = Map.of(
             "1", new User("1", "GREGORY"),
             "2", new User("2", "JANIE"),
             "3", new User("3", "WILLY")
-
     );
 
     @Override

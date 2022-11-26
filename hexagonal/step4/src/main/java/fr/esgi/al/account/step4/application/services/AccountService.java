@@ -1,5 +1,6 @@
 package fr.esgi.al.account.step4.application.services;
 
+import fr.esgi.al.account.step4.application.AccountApplicationException;
 import fr.esgi.al.account.step4.application.port.out.AccountRepository;
 import fr.esgi.al.account.step4.domain.Account;
 import fr.esgi.al.account.step4.domain.AccountConfiguration;
@@ -16,20 +17,21 @@ public final class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public void createAccount(Money initialMoney) {
+    public AccountId createAccount(Money initialMoney) {
         var accountId = accountRepository.nextId();
         var account = new Account(accountId, initialMoney);
         accountRepository.save(account);
+        return accountId;
     }
 
     public void sendMoney(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
 
         if (mayNotTransfer(amount)) {
-            throw new RuntimeException();
+            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
         }
 
-        final Account sourceAccount = accountRepository.findBy(sourceAccountId);
-        final Account targetAccount = accountRepository.findBy(targetAccountId);
+        var sourceAccount = accountRepository.findById(sourceAccountId);
+        var targetAccount = accountRepository.findById(targetAccountId);
 
         sourceAccount.withdraw(amount);
         targetAccount.deposit(amount);

@@ -4,7 +4,7 @@ import fr.esgi.al.account.step3.domain.Account;
 import fr.esgi.al.account.step3.domain.AccountId;
 
 public interface AccountRepository {
-    Account findBy(AccountId accountId);
+    Account findById(AccountId accountId);
 
-    void save(Account targetAccount);
+    void save(Account account);
 }

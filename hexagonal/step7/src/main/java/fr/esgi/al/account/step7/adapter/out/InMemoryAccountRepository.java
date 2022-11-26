@@ -1,15 +1,15 @@
-package fr.esgi.al.account.step4.adapter.out;
+package fr.esgi.al.account.step7.adapter.out;
 
-import fr.esgi.al.account.step4.application.port.out.AccountRepository;
-import fr.esgi.al.account.step4.domain.Account;
-import fr.esgi.al.account.step4.domain.AccountId;
-import fr.esgi.al.account.step4.domain.AccountNotFoundException;
+import fr.esgi.al.account.step7.application.AccountApplicationException;
+import fr.esgi.al.account.step7.application.port.out.AccountRepository;
+import fr.esgi.al.account.step7.domain.Account;
+import fr.esgi.al.account.step7.domain.AccountId;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class StubAccountRepository implements AccountRepository {
+public final class InMemoryAccountRepository implements AccountRepository {
 
     private final Map<AccountId, Account> registry = new HashMap<>();
 
@@ -22,7 +22,7 @@ public final class StubAccountRepository implements AccountRepository {
     public Account findBy(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
-                    throw new AccountNotFoundException();
+                    throw AccountApplicationException.notFoundAccountId(accountId);
                 });
     }
 

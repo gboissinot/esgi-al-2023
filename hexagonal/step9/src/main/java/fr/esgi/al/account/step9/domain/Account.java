@@ -44,4 +44,9 @@ public final class Account {
     public int hashCode() {
         return Objects.hash(accountId);
     }
+
+    @Override
+    public String toString() {
+        return String.format("[id=%s,balance=%,.2f]", id().value(), balance.value());
+    }
 }

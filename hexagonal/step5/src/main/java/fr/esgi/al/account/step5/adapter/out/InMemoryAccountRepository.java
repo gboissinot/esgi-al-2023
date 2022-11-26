@@ -1,15 +1,15 @@
 package fr.esgi.al.account.step5.adapter.out;
 
+import fr.esgi.al.account.step5.application.AccountApplicationException;
 import fr.esgi.al.account.step5.application.port.out.AccountRepository;
 import fr.esgi.al.account.step5.domain.Account;
 import fr.esgi.al.account.step5.domain.AccountId;
-import fr.esgi.al.account.step5.domain.AccountNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class StubAccountRepository implements AccountRepository {
+public final class InMemoryAccountRepository implements AccountRepository {
 
     private final Map<AccountId, Account> registry = new HashMap<>();
 
@@ -19,10 +19,10 @@ public final class StubAccountRepository implements AccountRepository {
     }
 
     @Override
-    public Account findBy(AccountId accountId) {
+    public Account findById(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
-                    throw new AccountNotFoundException();
+                    throw AccountApplicationException.notFoundAccountId(accountId);
                 });
     }
 

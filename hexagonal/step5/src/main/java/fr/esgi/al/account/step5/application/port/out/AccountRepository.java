@@ -7,7 +7,7 @@ public interface AccountRepository {
 
     AccountId nextId();
 
-    Account findBy(AccountId accountId);
+    Account findById(AccountId accountId);
 
     void save(Account account);
 }

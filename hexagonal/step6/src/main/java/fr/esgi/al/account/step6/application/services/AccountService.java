@@ -1,5 +1,6 @@
 package fr.esgi.al.account.step6.application.services;
 
+import fr.esgi.al.account.step6.application.AccountApplicationException;
 import fr.esgi.al.account.step6.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step6.application.port.in.CreateAccountUseCase;
 import fr.esgi.al.account.step6.application.port.in.SendMoneyCommand;
@@ -7,6 +8,7 @@ import fr.esgi.al.account.step6.application.port.in.SendMoneyUseCase;
 import fr.esgi.al.account.step6.application.port.out.AccountRepository;
 import fr.esgi.al.account.step6.domain.Account;
 import fr.esgi.al.account.step6.domain.AccountConfiguration;
+import fr.esgi.al.account.step6.domain.AccountId;
 import fr.esgi.al.account.step6.domain.Money;
 
 public final class AccountService implements CreateAccountUseCase, SendMoneyUseCase {
@@ -20,22 +22,25 @@ public final class AccountService implements CreateAccountUseCase, SendMoneyUseC
     }
 
     @Override
-    public void createAccount(CreateAccountCommand createAccountCommand) {
+    public AccountId createAccount(CreateAccountCommand createAccountCommand) {
         var accountId = accountRepository.nextId();
         var account = new Account(accountId, createAccountCommand.initialMoney);
         accountRepository.save(account);
+        return accountId;
     }
 
     @Override
     public void sendMoney(SendMoneyCommand sendMoneyCommand) {
 
+        var sourceAccountId = sendMoneyCommand.sourceAccountId;
+        var targetAccountId = sendMoneyCommand.targetAccountId;
         var amount = sendMoneyCommand.amount;
         if (mayNotTransfer(amount)) {
-            throw new RuntimeException();
+            throw AccountApplicationException.cannotTransfer(sourceAccountId, targetAccountId, amount);
         }
 
-        final Account sourceAccount = accountRepository.findBy(sendMoneyCommand.sourceAccountId);
-        final Account targetAccount = accountRepository.findBy(sendMoneyCommand.targetAccountId);
+        var sourceAccount = accountRepository.findById(sourceAccountId);
+        var targetAccount = accountRepository.findById(targetAccountId);
 
         sourceAccount.withdraw(amount);
         targetAccount.deposit(amount);

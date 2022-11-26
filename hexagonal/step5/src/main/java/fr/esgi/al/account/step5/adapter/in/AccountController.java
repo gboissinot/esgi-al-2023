@@ -1,5 +1,6 @@
 package fr.esgi.al.account.step5.adapter.in;
 
+import fr.esgi.al.account.step5.application.AccountApplicationException;
 import fr.esgi.al.account.step5.application.port.in.CreeateAccountCommand;
 import fr.esgi.al.account.step5.application.port.in.SendMoneyCommand;
 import fr.esgi.al.account.step5.application.services.AccountService;
@@ -14,11 +15,21 @@ public final class AccountController {
         this.accountService = accountService;
     }
 
-    public void create(Money initialAmount) {
-        accountService.createAccount(new CreeateAccountCommand(initialAmount));
+    public AccountId create(Money initialAmount) {
+        try {
+            return accountService.createAccount(new CreeateAccountCommand(initialAmount));
+        } catch (AccountApplicationException e) {
+            System.err.printf("Can't create an account.");
+            throw new RuntimeException();
+        }
     }
 
     public void transfer(AccountId source, AccountId target, Money amount) {
-        accountService.sendMoney(new SendMoneyCommand(source, target, amount));
+        try {
+            accountService.sendMoney(new SendMoneyCommand(source, target, amount));
+        } catch (AccountApplicationException e) {
+            System.err.printf("Unable to transfer money between the two accounts. Cause '%s'%n", e.getMessage());
+            throw new RuntimeException();
+        }
     }
 }

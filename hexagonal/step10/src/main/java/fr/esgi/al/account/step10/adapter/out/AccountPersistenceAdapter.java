@@ -1,11 +1,11 @@
 package fr.esgi.al.account.step10.adapter.out;
 
+import fr.esgi.al.account.step10.application.AccountApplicationException;
 import fr.esgi.al.account.step10.application.port.out.CreateAccountPort;
 import fr.esgi.al.account.step10.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step10.application.port.out.UpdateAccountStatePort;
 import fr.esgi.al.account.step10.domain.Account;
 import fr.esgi.al.account.step10.domain.AccountId;
-import fr.esgi.al.account.step10.domain.AccountNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     public Account loadAccount(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
-                    throw new AccountNotFoundException();
+                    throw AccountApplicationException.notFoundAccountId(accountId);
                 });
     }
 
