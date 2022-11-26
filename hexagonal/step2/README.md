@@ -18,5 +18,5 @@
 - A Money Value Object is used to the Account balance
 - Account Entity has two business methods : withdraw() and deposit()
 - Business rules are into the Account Entity
-- A domain exception AccountException is used
+- A domain exception AccountException is used and business rules are done into the domain
 - AccountException is an unchecked exception

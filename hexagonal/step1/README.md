@@ -21,7 +21,7 @@
 - The Dependency Inversion Principle (DIP) is applied for the output port (an abstraction by an interface is used)
 - A service class is the implementation of the use case
 
-# Explanation
+## Explanation
 
 - A module is implemented by a Java package
 - 3 top packages : adapter, application, domain
