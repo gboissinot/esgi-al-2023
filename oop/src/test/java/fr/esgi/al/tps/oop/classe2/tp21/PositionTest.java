@@ -11,9 +11,8 @@ public class PositionTest {
         Player player = new Player(initialPosition);
         player.moveLeft(2);
         player.moveLeft(3);
-        Assertions.assertEquals(new Position(5,20),player.currentPosition());
+        Assertions.assertEquals(new Position(5, 20), player.currentPosition());
     }
-
 
 
 }

@@ -14,7 +14,7 @@ public class PositionTest {
         player.moveLeft(4);
         Assertions.assertEquals(
                 Arrays.asList(new PlayerMoved(new Position(6, 20))),
-                        player.recordedEvents());
+                player.recordedEvents());
 
     }
 

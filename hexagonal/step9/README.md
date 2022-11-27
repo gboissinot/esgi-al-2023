@@ -16,3 +16,5 @@
 - Each command creation calls validate() method into the interface (default method)
 - Command default method validate() use the Validator collaboration object for validating commands
 - A kernel package brings common concern
+- SendMoneyCommand construction continues to need to check the positive value of initialAmount because @Positive bean
+  validation annotation doesn't work for value object 

@@ -2,7 +2,7 @@
 
 ## Description
 
-- Add the use case ports
+- Add the use case extension points
 
 ## Details
 

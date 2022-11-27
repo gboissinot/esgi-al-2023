@@ -5,7 +5,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class UserChangePasswordTest {
@@ -18,6 +19,6 @@ public class UserChangePasswordTest {
 
         ChangePasswordService changePasswordService = new ChangePasswordService(eventDispatcher);
         changePasswordService.changePassword("new password");
-        verify(eventDispatcher, times(1)).dispatch(new UserPasswordChanged("new password") );
+        verify(eventDispatcher, times(1)).dispatch(new UserPasswordChanged("new password"));
     }
 }
