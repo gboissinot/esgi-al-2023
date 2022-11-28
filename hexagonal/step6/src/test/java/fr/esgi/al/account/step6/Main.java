@@ -12,8 +12,9 @@ public class Main {
 
         var accountConfiguration = new AccountConfiguration(1000L);
         var accountRepository = new InMemoryAccountRepository();
-        var createAccountUseCase = new AccountService(accountConfiguration, accountRepository);
-        var sendMoneyUseCase = new AccountService(accountConfiguration, accountRepository);
+        var accountService = new AccountService(accountConfiguration, accountRepository);
+        var createAccountUseCase = accountService;
+        var sendMoneyUseCase = accountService;
         var accountController = new AccountController(createAccountUseCase, sendMoneyUseCase);
 
         var accountId1 = accountController.create(Money.of(250));
