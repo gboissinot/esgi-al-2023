@@ -13,7 +13,7 @@
 ## Explanation
 
 - An Account Entity is created
-- Account uses a AccountID object as a Value Object ID
+- Account uses an AccountID object as a Value Object ID
 - AccountID uses directly a UUID type
 - A Money Value Object is used to the Account balance
 - Account Entity has two business methods : withdraw() and deposit()
