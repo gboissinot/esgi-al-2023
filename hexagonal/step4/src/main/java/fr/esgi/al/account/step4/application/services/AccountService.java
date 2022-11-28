@@ -20,6 +20,7 @@ public final class AccountService {
     }
 
     public AccountId createAccount(Money initialMoney) {
+        Objects.requireNonNull(initialMoney);
         var accountId = accountRepository.nextId();
         var account = new Account(accountId, initialMoney);
         accountRepository.save(account);
