@@ -20,16 +20,22 @@ public final class AccountService {
     }
 
     public AccountId createAccount(Money initialMoney) {
-        Objects.requireNonNull(initialMoney);
+
+        checkCreateAccountAction(initialMoney);
+
         var accountId = accountRepository.nextId();
         var account = new Account(accountId, initialMoney);
         accountRepository.save(account);
         return accountId;
     }
 
+    private void checkCreateAccountAction(Money initialMoney) {
+        Objects.requireNonNull(initialMoney);
+    }
+
     public void sendMoney(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
 
-        checkInput(sourceAccountId, targetAccountId, amount);
+        checkSendMoneyAction(sourceAccountId, targetAccountId, amount);
 
         var sourceAccount = accountRepository.findById(sourceAccountId);
         var targetAccount = accountRepository.findById(targetAccountId);
@@ -41,7 +47,7 @@ public final class AccountService {
         accountRepository.save(targetAccount);
     }
 
-    private void checkInput(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
+    private void checkSendMoneyAction(AccountId sourceAccountId, AccountId targetAccountId, Money amount) {
         Objects.requireNonNull(sourceAccountId);
         Objects.requireNonNull(targetAccountId);
         Objects.requireNonNull(amount);

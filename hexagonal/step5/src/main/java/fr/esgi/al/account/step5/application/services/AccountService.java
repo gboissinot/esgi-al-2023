@@ -27,7 +27,6 @@ public final class AccountService {
     }
 
     public void sendMoney(SendMoneyCommand sendMoneyCommand) {
-
         var sourceAccountId = sendMoneyCommand.sourceAccountId;
         var targetAccountId = sendMoneyCommand.targetAccountId;
         var amount = sendMoneyCommand.amount;
