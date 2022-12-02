@@ -15,5 +15,6 @@
 - CreateAccountPort has the nextId() and save() methods
 - LoadAccountPort has the load() method
 - UpdateAccountStatePort has the update() method
-- AccountPersistenceAdapter implements the persistence output ports
-- SendMoneyService have two dependencies : LoadAccountPort and UpdateAccountStatePort
+- AccountPersistenceAdapter implements all the persistence output ports
+- SendMoneyService have two dependencies : LoadAccountPort and UpdateAccountStatePort interfaces
+- CreateAccountService has the dependency to the CreateAccountPort interface

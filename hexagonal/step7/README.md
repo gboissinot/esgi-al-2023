@@ -2,7 +2,7 @@
 
 ## Description
 
-- Apply the Interface Segregation Pattern for application services
+- Apply the Interface Segregation Principle for application services
 
 ## Details
 
@@ -13,3 +13,4 @@
 - CreateAccountService implements the CreateAccountUseCase
 - SendMoneyService implements the SendMoneyUseCase
 - AccountService has been deleted
+- No impact for the AccountController : the controller uses only the use case interfaces
