@@ -10,7 +10,7 @@
 
 ## Explanation
 
-- A Query extension point into the kernel is added
+- A Query extension point into the kernel is added, it is an interface
 - GetAccountBalanceUseCase is an input port
 - AccountBalanceQuery is a DTO
 - AccountBalanceQuery properties are validated with bean validation

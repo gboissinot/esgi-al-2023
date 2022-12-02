@@ -4,7 +4,6 @@ import fr.esgi.al.account.step13.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step13.application.port.in.CreateAccountUseCase;
 import fr.esgi.al.account.step13.application.port.out.CreateAccountPort;
 import fr.esgi.al.account.step13.domain.Account;
-import fr.esgi.al.account.step13.domain.AccountId;
 import fr.esgi.al.account.step13.domain.Money;
 
 public class CreateAccountService implements CreateAccountUseCase {
@@ -16,10 +15,10 @@ public class CreateAccountService implements CreateAccountUseCase {
     }
 
     @Override
-    public AccountId handle(CreateAccountCommand command) {
+    public String handle(CreateAccountCommand command) {
         var accountId = createAccountPort.nextId();
         var account = new Account(accountId, Money.of(command.initialMoney));
         createAccountPort.save(account);
-        return accountId;
+        return accountId.value();
     }
 }

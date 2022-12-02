@@ -1,7 +1,6 @@
 package fr.esgi.al.account.step13.application.port.in;
 
-import fr.esgi.al.account.step13.domain.Money;
 import fr.esgi.al.kernel.QueryHandler;
 
-public interface GetAccountBalanceUseCase extends QueryHandler<AccountBalanceQuery, Money> {
+public interface GetAccountBalanceUseCase extends QueryHandler<AccountBalanceQuery, Double> {
 }

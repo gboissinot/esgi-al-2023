@@ -12,5 +12,6 @@ public class AccountBalanceQuery implements Query {
 
     public AccountBalanceQuery(AccountId accountId) {
         this.accountId = accountId;
+        validate(this);
     }
 }
