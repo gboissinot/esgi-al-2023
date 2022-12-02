@@ -3,7 +3,7 @@ package fr.esgi.al.kernel;
 import javax.validation.ConstraintViolation;
 import java.util.Set;
 
-public interface Command<C> {
+public interface Command {
 
     default <C> void validate(C command) {
         var validator = UseCaseValidator.getInstance().validator();

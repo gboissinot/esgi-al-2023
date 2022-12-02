@@ -3,6 +3,8 @@ package fr.esgi.al.account.step13.adapter.in;
 import fr.esgi.al.account.step13.application.port.in.AccountBalanceQuery;
 import fr.esgi.al.account.step13.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step13.application.port.in.SendMoneyCommand;
+import fr.esgi.al.account.step13.domain.AccountId;
+import fr.esgi.al.account.step13.domain.Money;
 import fr.esgi.al.kernel.CommandBus;
 import fr.esgi.al.kernel.QueryBus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/accounts")
@@ -27,22 +30,22 @@ public class AccountWebController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public CreateAccountResponse create(@RequestBody @Valid CreateAccountRequest createAccountRequest) {
-        var accountId = (String) commandBus.post(new CreateAccountCommand(createAccountRequest.amount));
-        return new CreateAccountResponse(accountId);
+        var accountId = (AccountId) commandBus.post(new CreateAccountCommand(Money.of(createAccountRequest.amount)));
+        return new CreateAccountResponse(accountId.value());
     }
 
     @PostMapping(value = "/transfer", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void transfer(@RequestBody @Valid TransferAccountRequest transferAccountRequest) {
         commandBus.post(new SendMoneyCommand(
-                transferAccountRequest.sourceAccountId,
-                transferAccountRequest.targetAccountId,
-                transferAccountRequest.amount
+                AccountId.of(UUID.fromString(transferAccountRequest.sourceAccountId)),
+                AccountId.of(UUID.fromString(transferAccountRequest.targetAccountId)),
+                Money.of(transferAccountRequest.amount)
         ));
     }
 
     @GetMapping
     public GetBalanceResponse getBalance(@RequestParam String accountId) {
-        var balance = (Double) queryBus.post(new AccountBalanceQuery(accountId));
-        return new GetBalanceResponse(balance);
+        var balance = (Money) queryBus.post(new AccountBalanceQuery(AccountId.of(UUID.fromString(accountId))));
+        return new GetBalanceResponse(balance.value());
     }
 }

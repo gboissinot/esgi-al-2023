@@ -1,13 +1,11 @@
-# Step 14
+# Step 13
 
 ## Description
 
-- Replace the in memory persistence with a JPA
+- Reduces domain dependency
 
 ## Explanation
 
-- AccountEntity is a JPA entity
-- AccountRepository is JPA Repository
-- AccountRepository is an interface and extends the JPA Repository CrudRepository
-- A dynamic implementation to AccountRepository is injected by Spring Data JPA at boot-time
-- AccountPersistenceAdapter has a dependency to AccountRepository
+- Command and Query objects use only primitive types
+- Domain exceptions are not propagated to the adapters
+- Command and Query bus have the responsibility to convert exceptions from the domain layers to application exceptions

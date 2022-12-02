@@ -6,12 +6,9 @@ import fr.esgi.al.account.step13.application.port.in.SendMoneyUseCase;
 import fr.esgi.al.account.step13.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step13.application.port.out.UpdateAccountStatePort;
 import fr.esgi.al.account.step13.domain.AccountConfiguration;
-import fr.esgi.al.account.step13.domain.AccountId;
 import fr.esgi.al.account.step13.domain.Money;
 
-import java.util.UUID;
-
-public class SendMoneyService implements SendMoneyUseCase {
+public final class SendMoneyService implements SendMoneyUseCase {
 
     private final AccountConfiguration accountConfiguration;
     private final LoadAccountPort loadAccountPort;
@@ -26,9 +23,9 @@ public class SendMoneyService implements SendMoneyUseCase {
     @Override
     public Void handle(SendMoneyCommand sendMoneyCommand) {
 
-        var sourceAccountId = AccountId.of(UUID.fromString(sendMoneyCommand.sourceAccountId));
-        var targetAccountId = AccountId.of(UUID.fromString(sendMoneyCommand.targetAccountId));
-        var amount = Money.of(sendMoneyCommand.amount);
+        var sourceAccountId = sendMoneyCommand.sourceAccountId;
+        var targetAccountId = sendMoneyCommand.targetAccountId;
+        var amount = sendMoneyCommand.amount;
         if (mayNotTransfer(amount)) {
             throw AccountApplicationException.exceededThreshold(sourceAccountId, targetAccountId, amount);
         }

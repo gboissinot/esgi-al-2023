@@ -5,12 +5,13 @@ import fr.esgi.al.kernel.Query;
 
 import javax.validation.constraints.NotNull;
 
-public class AccountBalanceQuery implements Query<AccountBalanceQuery> {
+public final class AccountBalanceQuery implements Query {
 
     @NotNull
     public final AccountId accountId;
 
     public AccountBalanceQuery(AccountId accountId) {
         this.accountId = accountId;
+        validate(this);
     }
 }

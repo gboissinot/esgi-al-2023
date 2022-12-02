@@ -6,7 +6,7 @@ import fr.esgi.al.account.step11.application.port.out.CreateAccountPort;
 import fr.esgi.al.account.step11.domain.Account;
 import fr.esgi.al.account.step11.domain.AccountId;
 
-public class CreateAccountService implements CreateAccountUseCase {
+public final class CreateAccountService implements CreateAccountUseCase {
 
     private final CreateAccountPort createAccountPort;
 

@@ -2,7 +2,6 @@ package fr.esgi.al.kernel;
 
 import java.util.HashMap;
 
-@SuppressWarnings("all")
 public final class BusFactory {
 
     private BusFactory() {

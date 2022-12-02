@@ -5,7 +5,7 @@ import javax.validation.Validator;
 import java.util.Map;
 import java.util.Set;
 
-final class DefaultCommandBus<C extends Command<C>> implements CommandBus<C> {
+final class DefaultCommandBus<C extends Command> implements CommandBus<C> {
 
     private final Map<Class<C>, CommandHandler> registry;
     private final Validator validator;
@@ -19,17 +19,11 @@ final class DefaultCommandBus<C extends Command<C>> implements CommandBus<C> {
     public <R> R post(C command) {
         final Set<ConstraintViolation<C>> violations = validator.validate(command);
         if (!violations.isEmpty()) {
-            throw new ApplicationException(violations.toString());
+            throw new RuntimeException(violations.toString());
         }
 
         var commandHandler = registry.get(command.getClass());
-
-        try {
-
-            return (R) commandHandler.handle(command);
-        } catch (Exception e) {
-            throw new ApplicationException("Can't handle the command " + command.name(), e);
-        }
+        return (R) commandHandler.handle(command);
     }
 
     @Override

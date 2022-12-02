@@ -18,17 +18,15 @@ public final class AccountController {
         this.queryBus = queryBus;
     }
 
-    public String create(double initialAmount) {
-        var accountId = (AccountId) commandBus.post(new CreateAccountCommand(initialAmount));
-        return accountId.value();
+    public AccountId create(double initialAmount) {
+        return (AccountId) commandBus.post(new CreateAccountCommand(initialAmount));
     }
 
     public void transfer(String sourceAccountId, String targetAccountId, double amount) {
         commandBus.post(new SendMoneyCommand(sourceAccountId, targetAccountId, amount));
     }
 
-    public double getBalance(String accountId) {
-        var amount = (Money) queryBus.post(new AccountBalanceQuery(accountId));
-        return amount.value();
+    public Money getBalance(String accountId) {
+        return (Money) queryBus.post(new AccountBalanceQuery(accountId));
     }
 }

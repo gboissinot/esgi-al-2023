@@ -4,7 +4,7 @@ import fr.esgi.al.kernel.Command;
 
 import javax.validation.constraints.NotNull;
 
-public class CreateAccountCommand implements Command<CreateAccountCommand> {
+public final class CreateAccountCommand implements Command {
 
     @NotNull
     public final double initialMoney;

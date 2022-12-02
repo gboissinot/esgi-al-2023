@@ -1,6 +1,6 @@
 package fr.esgi.al.account.step12.domain;
 
-public class AccountException extends RuntimeException {
+public final class AccountException extends RuntimeException {
     private AccountException(String message) {
         super(message);
     }

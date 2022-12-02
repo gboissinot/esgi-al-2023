@@ -1,32 +1,30 @@
 package fr.esgi.al.account.step11.adapter.in;
 
-import fr.esgi.al.account.step11.application.port.in.AccountBalanceQuery;
-import fr.esgi.al.account.step11.application.port.in.CreateAccountCommand;
-import fr.esgi.al.account.step11.application.port.in.SendMoneyCommand;
+import fr.esgi.al.account.step11.application.port.in.*;
 import fr.esgi.al.account.step11.domain.AccountId;
 import fr.esgi.al.account.step11.domain.Money;
-import fr.esgi.al.kernel.CommandBus;
-import fr.esgi.al.kernel.QueryBus;
 
 public final class AccountController {
 
-    private final CommandBus commandBus;
-    private final QueryBus queryBus;
+    private final CreateAccountUseCase createAccountUseCase;
+    private final SendMoneyUseCase sendMoneyUseCase;
+    private final GetAccountBalanceUseCase getAccountBalanceUseCase;
 
-    public AccountController(CommandBus commandBus, QueryBus queryBus) {
-        this.commandBus = commandBus;
-        this.queryBus = queryBus;
+    public AccountController(CreateAccountUseCase createAccountUseCase, SendMoneyUseCase sendMoneyUseCase, GetAccountBalanceUseCase getAccountBalanceUseCase) {
+        this.createAccountUseCase = createAccountUseCase;
+        this.sendMoneyUseCase = sendMoneyUseCase;
+        this.getAccountBalanceUseCase = getAccountBalanceUseCase;
     }
 
     public AccountId create(Money initialAmount) {
-        return (AccountId) commandBus.post(new CreateAccountCommand(initialAmount));
+        return createAccountUseCase.handle(new CreateAccountCommand(initialAmount));
     }
 
     public void transfer(AccountId source, AccountId target, Money amount) {
-        commandBus.post(new SendMoneyCommand(source, target, amount));
+        sendMoneyUseCase.handle(new SendMoneyCommand(source, target, amount));
     }
 
     public Money getBalance(AccountId accountId) {
-        return (Money) queryBus.post(new AccountBalanceQuery(accountId));
+        return getAccountBalanceUseCase.handle(new AccountBalanceQuery(accountId));
     }
 }

@@ -18,15 +18,15 @@ public final class AccountController {
         this.queryBus = queryBus;
     }
 
-    public AccountId create(double initialAmount) {
+    public AccountId create(Money initialAmount) {
         return (AccountId) commandBus.post(new CreateAccountCommand(initialAmount));
     }
 
-    public void transfer(String sourceAccountId, String targetAccountId, double amount) {
-        commandBus.post(new SendMoneyCommand(sourceAccountId, targetAccountId, amount));
+    public void transfer(AccountId source, AccountId target, Money amount) {
+        commandBus.post(new SendMoneyCommand(source, target, amount));
     }
 
-    public Money getBalance(String accountId) {
+    public Money getBalance(AccountId accountId) {
         return (Money) queryBus.post(new AccountBalanceQuery(accountId));
     }
 }

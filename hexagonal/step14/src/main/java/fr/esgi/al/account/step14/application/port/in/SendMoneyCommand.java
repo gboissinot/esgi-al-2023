@@ -5,7 +5,7 @@ import fr.esgi.al.kernel.Command;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-public class SendMoneyCommand implements Command<SendMoneyCommand> {
+public final class SendMoneyCommand implements Command {
 
     @NotNull
     public final String sourceAccountId;

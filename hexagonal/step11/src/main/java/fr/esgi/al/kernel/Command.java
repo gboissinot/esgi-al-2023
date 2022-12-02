@@ -1,4 +1,15 @@
 package fr.esgi.al.kernel;
 
-public interface Command<C> {
+import javax.validation.ConstraintViolation;
+import java.util.Set;
+
+public interface Command {
+
+    default <C> void validate(C command) {
+        var validator = UseCaseValidator.getInstance().validator();
+        final Set<ConstraintViolation<C>> violations = validator.validate(command);
+        if (!violations.isEmpty()) {
+            throw new RuntimeException(violations.toString());
+        }
+    }
 }

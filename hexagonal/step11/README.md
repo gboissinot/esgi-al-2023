@@ -2,16 +2,14 @@
 
 ## Description
 
-- Introduce a bus layer
+- Standardize Use cases interfaces
 
 ## Details
 
-- Use a CommandBus and a QueryBus from a Kernel
+- Use a CommandHandler and a QueryHandler with a handle() method
 
 ## Explanation
 
-- AccountController has a dependency to commandBus and queryBus
 - Command use cases follows the CommandHandler interface
-- Query use case follows the QueryHandler interface
-- Command and Query are only extension point. The validate() method is deleted.
-- Bean validations is activated into the query and command bus
+- Query use cases follows the QueryHandler interface
+- AccountController always use the handle() method for each use case

@@ -9,11 +9,9 @@ import fr.esgi.al.account.step14.domain.AccountConfiguration;
 import fr.esgi.al.account.step14.domain.AccountId;
 import fr.esgi.al.account.step14.domain.Money;
 
-import javax.transaction.Transactional;
 import java.util.UUID;
 
-@Transactional
-public class SendMoneyService implements SendMoneyUseCase {
+public final class SendMoneyService implements SendMoneyUseCase {
 
     private final AccountConfiguration accountConfiguration;
     private final LoadAccountPort loadAccountPort;

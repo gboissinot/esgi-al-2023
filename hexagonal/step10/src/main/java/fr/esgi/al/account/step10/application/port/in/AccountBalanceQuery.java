@@ -5,7 +5,7 @@ import fr.esgi.al.kernel.Query;
 
 import javax.validation.constraints.NotNull;
 
-public class AccountBalanceQuery implements Query {
+public final class AccountBalanceQuery implements Query {
 
     @NotNull
     public final AccountId accountId;

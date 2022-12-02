@@ -1,17 +1,16 @@
-# Step 12
+# Step 11
 
 ## Description
 
-- Add a REST Web Controller
+- Introduce a bus layer
 
 ## Details
 
-- Uses Spring Boot Web library
+- Use a CommandBus and a QueryBus
 
 ## Explanation
 
-- The web controller is an input port
-- AccountWebController is the entry point for web requests
-- CreateAccountRequest, CreateAccountResponse, TransferAccountRequest, GetBalanceResponse are the Web model
-- Web model uses also the bean validation
-- The web controller has the responsibility to invoke commands and query through the command bus and query bus
+- AccountController has a dependency to commandBus and queryBus
+- Command and Query are only extension points : the validate() method is deleted.
+- Command and Query objects doesn't call the validate() methods
+- Bean validations is activated into the query and command bus

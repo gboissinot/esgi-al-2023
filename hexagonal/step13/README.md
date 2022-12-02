@@ -1,12 +1,17 @@
-# Step 13
+# Step 12
 
 ## Description
 
-- Reduces domain dependency
+- Add a REST Web Controller
+
+## Details
+
+- Uses Spring Boot Web library
 
 ## Explanation
 
-- Command and Query objects use only primitive types
-- Domain exceptions are not propagated to the adapters
-- Command and Query bus implementations have the responsibility to convert exceptions from the domain layers to
-  application exceptions
+- The web controller is an input port
+- AccountWebController is the entry point for web requests
+- CreateAccountRequest, CreateAccountResponse, TransferAccountRequest, GetBalanceResponse are the Web model
+- Web model uses also the bean validation
+- The web controller has the responsibility to invoke commands and query through the command bus and query bus

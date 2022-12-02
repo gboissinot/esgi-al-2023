@@ -6,7 +6,7 @@ import fr.esgi.al.kernel.Command;
 
 import javax.validation.constraints.NotNull;
 
-public class SendMoneyCommand implements Command<SendMoneyCommand> {
+public final class SendMoneyCommand implements Command {
 
     @NotNull
     public final AccountId sourceAccountId;
@@ -19,6 +19,7 @@ public class SendMoneyCommand implements Command<SendMoneyCommand> {
         this.sourceAccountId = sourceAccountId;
         this.targetAccountId = targetAccountId;
         this.amount = amount;
+        validate(this);
         if (!this.amount.isPositive()) {
             throw new IllegalArgumentException();
         }

@@ -5,7 +5,7 @@ import fr.esgi.al.account.step12.application.port.in.GetAccountBalanceUseCase;
 import fr.esgi.al.account.step12.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step12.domain.Money;
 
-public class GetAccountBalanceService implements GetAccountBalanceUseCase {
+public final class GetAccountBalanceService implements GetAccountBalanceUseCase {
 
     private final LoadAccountPort loadAccountPort;
 
