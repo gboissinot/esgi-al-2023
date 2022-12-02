@@ -5,7 +5,8 @@ import java.util.Set;
 
 public interface Command<C> {
 
-    default <C> void validate(C command) {
+    @SuppressWarnings("all")
+    default void validate(C command) {
         var validator = CommandValidator.getInstance().validator();
         final Set<ConstraintViolation<C>> violations = validator.validate(command);
         if (!violations.isEmpty()) {

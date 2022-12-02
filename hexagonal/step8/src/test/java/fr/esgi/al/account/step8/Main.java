@@ -1,17 +1,19 @@
 package fr.esgi.al.account.step8;
 
 import fr.esgi.al.account.step8.adapter.in.AccountController;
-import fr.esgi.al.account.step8.adapter.out.AccountPersistenceAdapter;
+import fr.esgi.al.account.step8.adapter.out.InMemoryAccountPersistenceAdapter;
 import fr.esgi.al.account.step8.application.services.CreateAccountService;
 import fr.esgi.al.account.step8.application.services.SendMoneyService;
 import fr.esgi.al.account.step8.domain.AccountConfiguration;
 import fr.esgi.al.account.step8.domain.Money;
 
 public class Main {
+
+    @SuppressWarnings("all")
     public static void main(String[] args) {
         var accountConfiguration = new AccountConfiguration(1000L);
 
-        var accountPersistenceAdapter = new AccountPersistenceAdapter();
+        var accountPersistenceAdapter = new InMemoryAccountPersistenceAdapter();
         var loadAccountPort = accountPersistenceAdapter;
         var createAccountPort = accountPersistenceAdapter;
         var updateAccountStatePort = accountPersistenceAdapter;

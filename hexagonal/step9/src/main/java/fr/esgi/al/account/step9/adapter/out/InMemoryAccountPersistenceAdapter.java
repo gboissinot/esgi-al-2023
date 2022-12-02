@@ -1,17 +1,17 @@
-package fr.esgi.al.account.step8.adapter.out;
+package fr.esgi.al.account.step9.adapter.out;
 
-import fr.esgi.al.account.step8.application.port.out.CreateAccountPort;
-import fr.esgi.al.account.step8.application.port.out.LoadAccountPort;
-import fr.esgi.al.account.step8.application.port.out.UpdateAccountStatePort;
-import fr.esgi.al.account.step8.domain.Account;
-import fr.esgi.al.account.step8.domain.AccountException;
-import fr.esgi.al.account.step8.domain.AccountId;
+import fr.esgi.al.account.step9.application.port.out.CreateAccountPort;
+import fr.esgi.al.account.step9.application.port.out.LoadAccountPort;
+import fr.esgi.al.account.step9.application.port.out.UpdateAccountStatePort;
+import fr.esgi.al.account.step9.domain.Account;
+import fr.esgi.al.account.step9.domain.AccountException;
+import fr.esgi.al.account.step9.domain.AccountId;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
+public class InMemoryAccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
 
     private final Map<AccountId, Account> registry = new HashMap<>();
 
