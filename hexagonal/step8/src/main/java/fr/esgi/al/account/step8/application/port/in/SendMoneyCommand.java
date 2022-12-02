@@ -5,7 +5,7 @@ import fr.esgi.al.account.step8.domain.Money;
 
 import java.util.Objects;
 
-public class SendMoneyCommand {
+public final class SendMoneyCommand {
 
     public final AccountId sourceAccountId;
     public final AccountId targetAccountId;

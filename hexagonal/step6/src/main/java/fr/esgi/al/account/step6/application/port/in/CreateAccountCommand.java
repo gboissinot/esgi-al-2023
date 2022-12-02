@@ -4,7 +4,7 @@ import fr.esgi.al.account.step6.domain.Money;
 
 import java.util.Objects;
 
-public class CreateAccountCommand {
+public final class CreateAccountCommand {
 
     public final Money initialMoney;
 

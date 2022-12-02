@@ -12,5 +12,6 @@
 
 - CreateAccountService implements the CreateAccountUseCase
 - SendMoneyService implements the SendMoneyUseCase
-- AccountService has been deleted
-- No impact for the AccountController : the controller uses only the use case interfaces
+- Each service has only one responsibility
+- The AccountService class has been deleted
+- AccountController is not modified : the controller uses only the use case interfaces

@@ -2,7 +2,7 @@
 
 ## Description
 
-- Apply the Interface Segregation Pattern for output ports
+- Apply the Interface Segregation Principle for output ports
 
 ## Details
 
@@ -16,5 +16,5 @@
 - LoadAccountPort has the load() method
 - UpdateAccountStatePort has the update() method
 - InMemoryAccountPersistenceAdapter implements all the persistence output ports
-- SendMoneyService have two dependencies : LoadAccountPort and UpdateAccountStatePort interfaces
-- CreateAccountService has the dependency to the CreateAccountPort interface
+- SendMoneyService has only two dependencies : LoadAccountPort and UpdateAccountStatePort
+- CreateAccountService has only CreateAccountPort as dependency

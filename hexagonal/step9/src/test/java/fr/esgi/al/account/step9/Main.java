@@ -10,11 +10,13 @@ import fr.esgi.al.account.step9.domain.Money;
 public class Main {
     public static void main(String[] args) {
         var persistenceAdapter = new InMemoryAccountPersistenceAdapter();
-        AccountController accountController =
+        var accountController =
                 new AccountController(
                         new CreateAccountService(persistenceAdapter),
                         new SendMoneyService(new AccountConfiguration(5000), persistenceAdapter, persistenceAdapter));
 
-        accountController.create(Money.of(50));
+        var accountId = accountController.create(Money.of(50));
+        var account = persistenceAdapter.load(accountId);
+        System.out.println(account);
     }
 }

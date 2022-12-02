@@ -8,7 +8,7 @@ import fr.esgi.al.account.step9.application.port.out.UpdateAccountStatePort;
 import fr.esgi.al.account.step9.domain.AccountConfiguration;
 import fr.esgi.al.account.step9.domain.Money;
 
-public class SendMoneyService implements SendMoneyUseCase {
+public final class SendMoneyService implements SendMoneyUseCase {
 
     private final AccountConfiguration accountConfiguration;
     private final LoadAccountPort loadAccountPort;

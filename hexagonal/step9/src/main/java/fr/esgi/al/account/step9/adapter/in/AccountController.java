@@ -17,8 +17,8 @@ public final class AccountController {
         this.sendMoneyUseCase = sendMoneyUseCase;
     }
 
-    public void create(Money initialAmount) {
-        createAccountUseCase.createAccount(new CreateAccountCommand(initialAmount));
+    public AccountId create(Money initialAmount) {
+        return createAccountUseCase.createAccount(new CreateAccountCommand(initialAmount));
     }
 
     public void transfer(AccountId source, AccountId target, Money amount) {

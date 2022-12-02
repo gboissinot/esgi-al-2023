@@ -1,6 +1,7 @@
 package fr.esgi.al.account.step9.application.port.in;
 
-public interface CreateAccountUseCase {
+import fr.esgi.al.account.step9.domain.AccountId;
 
-    void createAccount(CreateAccountCommand createAccountCommand);
+public interface CreateAccountUseCase {
+    AccountId createAccount(CreateAccountCommand createAccountCommand);
 }

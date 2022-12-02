@@ -2,7 +2,7 @@
 
 ## Description
 
-- Add the use case extension points
+- Add use case extension points
 
 ## Details
 
@@ -13,3 +13,4 @@
 - CreateAccountUseCase and SendMoneyUseCase are interfaces
 - AccountService implements the both use cases
 - Commands objects are input for the use cases methods
+- AccountController uses the both use cases by dependency injection

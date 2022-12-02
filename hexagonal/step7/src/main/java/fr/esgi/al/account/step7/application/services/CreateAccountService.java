@@ -6,7 +6,7 @@ import fr.esgi.al.account.step7.application.port.out.AccountRepository;
 import fr.esgi.al.account.step7.domain.Account;
 import fr.esgi.al.account.step7.domain.AccountId;
 
-public class CreateAccountService implements CreateAccountUseCase {
+public final class CreateAccountService implements CreateAccountUseCase {
 
     private final AccountRepository accountRepository;
 
