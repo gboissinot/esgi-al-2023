@@ -19,11 +19,15 @@ final class DefaultCommandBus<C extends Command> implements CommandBus<C> {
     public <R> R post(C command) {
         final Set<ConstraintViolation<C>> violations = validator.validate(command);
         if (!violations.isEmpty()) {
-            throw new RuntimeException(violations.toString());
+            throw new ApplicationException(violations.toString());
         }
 
-        var commandHandler = registry.get(command.getClass());
-        return (R) commandHandler.handle(command);
+        try {
+            var commandHandler = registry.get(command.getClass());
+            return (R) commandHandler.handle(command);
+        } catch (Exception e) {
+            throw new ApplicationException(String.format("Can't execute %s", command.name()), e);
+        }
     }
 
     @Override

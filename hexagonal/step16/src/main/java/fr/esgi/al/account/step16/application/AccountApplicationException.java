@@ -2,8 +2,9 @@ package fr.esgi.al.account.step16.application;
 
 import fr.esgi.al.account.step16.domain.AccountId;
 import fr.esgi.al.account.step16.domain.Money;
+import fr.esgi.al.kernel.ApplicationException;
 
-public final class AccountApplicationException extends RuntimeException {
+public final class AccountApplicationException extends ApplicationException {
 
     private AccountApplicationException(String message) {
         super(message);

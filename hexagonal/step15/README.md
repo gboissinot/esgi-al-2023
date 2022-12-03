@@ -2,9 +2,9 @@
 
 ## Description
 
-- Remove not necessary use cases interfaces
+- Remove use cases interfaces
 
 ## Explanation
 
 - Application services implements CommandHandler or QueryHandler
-- Application input port contains only query and command objects
+- Application input ports package contains only query and command objects

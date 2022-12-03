@@ -22,8 +22,12 @@ final class DefaultQueryBus<Q extends Query> implements QueryBus<Q> {
             throw new RuntimeException(violations.toString());
         }
 
-        var queryHandler = registry.get(query.getClass());
-        return (R) queryHandler.handle(query);
+        try {
+            var queryHandler = registry.get(query.getClass());
+            return (R) queryHandler.handle(query);
+        } catch (Exception e) {
+            throw new ApplicationException(String.format("Can't execute %s", query.name()), e);
+        }
     }
 
     @Override

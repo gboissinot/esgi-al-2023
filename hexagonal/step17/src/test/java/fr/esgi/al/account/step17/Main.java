@@ -22,16 +22,12 @@ public class Main {
         var loadAccountPort = persistenceAdapter;
         var updateAccountStatePort = persistenceAdapter;
 
-        var createAccountService = new CreateAccountService(createAccountPort);
-
         var eventDispatcher = DefaultEventDispatcher.create();
         eventDispatcher.register(TransferAcceptedEvent.class, new NotificationsService(new LogNotifications()));
 
-        var sendMoneyService = new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort, eventDispatcher);
-
         var commandBus = BusFactory.defaultCommandBus();
-        commandBus.register(SendMoneyCommand.class, sendMoneyService);
-        commandBus.register(CreateAccountCommand.class, createAccountService);
+        commandBus.register(SendMoneyCommand.class, new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort, eventDispatcher));
+        commandBus.register(CreateAccountCommand.class, new CreateAccountService(createAccountPort));
 
         var queryBus = BusFactory.defaultQueryBus();
         queryBus.register(AccountBalanceQuery.class, new GetAccountBalanceService(loadAccountPort));
