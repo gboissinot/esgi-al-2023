@@ -1,14 +1,12 @@
 package fr.esgi.al.account.step15.application.services;
 
 import fr.esgi.al.account.step15.application.port.in.CreateAccountCommand;
-import fr.esgi.al.account.step15.application.port.in.CreateAccountUseCase;
 import fr.esgi.al.account.step15.application.port.out.CreateAccountPort;
 import fr.esgi.al.account.step15.domain.Account;
-import fr.esgi.al.account.step15.domain.AccountId;
 import fr.esgi.al.account.step15.domain.Money;
+import fr.esgi.al.kernel.CommandHandler;
 
-//@Transactional
-public final class CreateAccountService implements CreateAccountUseCase {
+public final class CreateAccountService implements CommandHandler<CreateAccountCommand, String> {
 
     private final CreateAccountPort createAccountPort;
 
@@ -17,10 +15,10 @@ public final class CreateAccountService implements CreateAccountUseCase {
     }
 
     @Override
-    public AccountId handle(CreateAccountCommand command) {
+    public String handle(CreateAccountCommand command) {
         var accountId = createAccountPort.nextId();
         var account = new Account(accountId, Money.of(command.initialMoney));
         createAccountPort.save(account);
-        return accountId;
+        return accountId.value();
     }
 }

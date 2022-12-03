@@ -3,8 +3,6 @@ package fr.esgi.al.account.step15.adapter.in;
 import fr.esgi.al.account.step15.application.port.in.AccountBalanceQuery;
 import fr.esgi.al.account.step15.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step15.application.port.in.SendMoneyCommand;
-import fr.esgi.al.account.step15.domain.AccountId;
-import fr.esgi.al.account.step15.domain.Money;
 import fr.esgi.al.kernel.CommandBus;
 import fr.esgi.al.kernel.QueryBus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +27,8 @@ public class AccountWebController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public CreateAccountResponse create(@RequestBody @Valid CreateAccountRequest createAccountRequest) {
-        var accountId = (AccountId) commandBus.post(new CreateAccountCommand(createAccountRequest.amount));
-        return new CreateAccountResponse(accountId.value());
+        var accountId = (String) commandBus.post(new CreateAccountCommand(createAccountRequest.amount));
+        return new CreateAccountResponse(accountId);
     }
 
     @PostMapping(value = "/transfer", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -44,7 +42,7 @@ public class AccountWebController {
 
     @GetMapping
     public GetBalanceResponse getBalance(@RequestParam String accountId) {
-        var balance = (Money) queryBus.post(new AccountBalanceQuery(accountId));
-        return new GetBalanceResponse(balance.value());
+        var balance = (Double) queryBus.post(new AccountBalanceQuery(accountId));
+        return new GetBalanceResponse(balance);
     }
 }

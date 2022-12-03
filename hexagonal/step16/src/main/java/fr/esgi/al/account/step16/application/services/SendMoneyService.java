@@ -8,24 +8,21 @@ import fr.esgi.al.account.step16.application.port.out.UpdateAccountStatePort;
 import fr.esgi.al.account.step16.domain.AccountConfiguration;
 import fr.esgi.al.account.step16.domain.AccountId;
 import fr.esgi.al.account.step16.domain.Money;
-import fr.esgi.al.kernel.EventDispatcher;
 
 import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Transactional
-public class SendMoneyService implements SendMoneyUseCase {
+public final class SendMoneyService implements SendMoneyUseCase {
 
     private final AccountConfiguration accountConfiguration;
     private final LoadAccountPort loadAccountPort;
     private final UpdateAccountStatePort updateAccountStatePort;
-    private final EventDispatcher eventDispatcher;
 
-    public SendMoneyService(AccountConfiguration accountConfiguration, LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort, EventDispatcher eventDispatcher) {
+    public SendMoneyService(AccountConfiguration accountConfiguration, LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort) {
         this.accountConfiguration = accountConfiguration;
         this.loadAccountPort = loadAccountPort;
         this.updateAccountStatePort = updateAccountStatePort;
-        this.eventDispatcher = eventDispatcher;
     }
 
     @Override
@@ -46,8 +43,6 @@ public class SendMoneyService implements SendMoneyUseCase {
 
         updateAccountStatePort.update(sourceAccount);
         updateAccountStatePort.update(targetAccount);
-
-        eventDispatcher.dispatch(new TransferAcceptedEvent(sourceAccountId, targetAccountId, amount));
 
         return null;
     }

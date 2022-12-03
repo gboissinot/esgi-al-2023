@@ -8,7 +8,7 @@ import fr.esgi.al.account.step16.domain.AccountId;
 import fr.esgi.al.account.step16.domain.Money;
 
 //@Transactional
-public class CreateAccountService implements CreateAccountUseCase {
+public final class CreateAccountService implements CreateAccountUseCase {
 
     private final CreateAccountPort createAccountPort;
 

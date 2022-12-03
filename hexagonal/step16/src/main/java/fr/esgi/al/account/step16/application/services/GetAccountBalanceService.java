@@ -8,7 +8,7 @@ import fr.esgi.al.account.step16.domain.Money;
 
 import java.util.UUID;
 
-public class GetAccountBalanceService implements GetAccountBalanceUseCase {
+public final class GetAccountBalanceService implements GetAccountBalanceUseCase {
 
     private final LoadAccountPort loadAccountPort;
 
