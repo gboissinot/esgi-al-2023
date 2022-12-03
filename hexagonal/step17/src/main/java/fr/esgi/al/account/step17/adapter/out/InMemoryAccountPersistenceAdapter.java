@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class InMemoryAccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
+public final class InMemoryAccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
 
     private final Map<AccountId, Account> registry = new HashMap<>();
 

@@ -1,7 +1,7 @@
 package fr.esgi.al.account.step17;
 
+import fr.esgi.al.account.step17.adapter.out.AccountEntityRepository;
 import fr.esgi.al.account.step17.adapter.out.AccountPersistenceAdapter;
-import fr.esgi.al.account.step17.adapter.out.AccountRepository;
 import fr.esgi.al.kernel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,11 +12,11 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfiguration {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountEntityRepository accountEntityRepository;
 
     @Bean
     public AccountPersistenceAdapter persistenceAdapter() {
-        return new AccountPersistenceAdapter(accountRepository);
+        return new AccountPersistenceAdapter(accountEntityRepository);
     }
 
     @Bean

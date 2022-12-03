@@ -2,19 +2,19 @@ package fr.esgi.al.account.step17.application.services;
 
 import fr.esgi.al.account.step17.application.AccountApplicationException;
 import fr.esgi.al.account.step17.application.port.in.SendMoneyCommand;
-import fr.esgi.al.account.step17.application.port.in.SendMoneyUseCase;
 import fr.esgi.al.account.step17.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step17.application.port.out.UpdateAccountStatePort;
 import fr.esgi.al.account.step17.domain.AccountConfiguration;
 import fr.esgi.al.account.step17.domain.AccountId;
 import fr.esgi.al.account.step17.domain.Money;
+import fr.esgi.al.kernel.CommandHandler;
 import fr.esgi.al.kernel.EventDispatcher;
 
 import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Transactional
-public class SendMoneyService implements SendMoneyUseCase {
+public class SendMoneyService implements CommandHandler<SendMoneyCommand, Void> {
 
     private final AccountConfiguration accountConfiguration;
     private final LoadAccountPort loadAccountPort;

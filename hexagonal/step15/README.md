@@ -1,11 +1,10 @@
-# Step 13
+# Step 15
 
 ## Description
 
-- Reduces domain dependency
+- Remove not necessary use cases interfaces
 
 ## Explanation
 
-- Command and Query objects use only primitive types
-- Domain exceptions are not propagated to the adapters
-- Command and Query bus have the responsibility to convert exceptions from the domain layers to application exceptions
+- Application services implements CommandHandler or QueryHandler
+- Application input port contains only query and command objects

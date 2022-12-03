@@ -1,6 +1,9 @@
 package fr.esgi.al.account.step13;
 
 import fr.esgi.al.account.step13.adapter.out.AccountPersistenceAdapter;
+import fr.esgi.al.account.step13.application.port.in.CreateAccountUseCase;
+import fr.esgi.al.account.step13.application.port.in.GetAccountBalanceUseCase;
+import fr.esgi.al.account.step13.application.port.in.SendMoneyUseCase;
 import fr.esgi.al.account.step13.application.services.CreateAccountService;
 import fr.esgi.al.account.step13.application.services.GetAccountBalanceService;
 import fr.esgi.al.account.step13.application.services.SendMoneyService;
@@ -31,18 +34,18 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public SendMoneyService sendMoneyService() {
+    public CreateAccountUseCase createAccountUseCase() {
+        return new CreateAccountService(persistenceAdapter());
+    }
+
+    @Bean
+    public SendMoneyUseCase sendMoneyUseCase() {
         return new SendMoneyService(
                 new AccountConfiguration(500), persistenceAdapter(), persistenceAdapter());
     }
 
     @Bean
-    public CreateAccountService createAccountService() {
-        return new CreateAccountService(persistenceAdapter());
-    }
-
-    @Bean
-    public GetAccountBalanceService accountBalanceService() {
+    public GetAccountBalanceUseCase accountBalanceUseCase() {
         return new GetAccountBalanceService(persistenceAdapter());
     }
 }

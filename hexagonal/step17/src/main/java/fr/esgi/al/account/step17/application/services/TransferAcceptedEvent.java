@@ -4,7 +4,7 @@ import fr.esgi.al.account.step17.domain.AccountId;
 import fr.esgi.al.account.step17.domain.Money;
 import fr.esgi.al.kernel.Event;
 
-public class TransferAcceptedEvent implements Event {
+public final class TransferAcceptedEvent implements Event {
 
     private final AccountId sourceAccountId;
     private final AccountId targetAccountId;

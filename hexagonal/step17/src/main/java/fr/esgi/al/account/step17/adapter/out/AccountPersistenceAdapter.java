@@ -13,10 +13,10 @@ import java.util.UUID;
 
 public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
 
-    private final AccountRepository accountRepository;
+    private final AccountEntityRepository accountEntityRepository;
 
-    public AccountPersistenceAdapter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AccountPersistenceAdapter(AccountEntityRepository accountEntityRepository) {
+        this.accountEntityRepository = accountEntityRepository;
     }
 
     @Override
@@ -27,12 +27,12 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     @Override
     public void save(Account account) {
         var accountEntity = new AccountEntity(account.id().value(), account.balance().value());
-        accountRepository.save(accountEntity);
+        accountEntityRepository.save(accountEntity);
     }
 
     @Override
     public Account load(AccountId accountId) {
-        final Optional<AccountEntity> optionalAccountEntity = accountRepository.findById(accountId.value());
+        final Optional<AccountEntity> optionalAccountEntity = accountEntityRepository.findById(accountId.value());
         if (optionalAccountEntity.isPresent()) {
             var accountEntity = optionalAccountEntity.get();
             return new Account(AccountId.of(UUID.fromString(accountEntity.getId())), Money.of(accountEntity.getBalance()));
@@ -43,6 +43,6 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     @Override
     public void update(Account account) {
         var accountEntity = new AccountEntity(account.id().value(), account.balance().value());
-        accountRepository.save(accountEntity);
+        accountEntityRepository.save(accountEntity);
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_ACCOUNT")
-public class AccountEntity {
+public final class AccountEntity {
 
     @Id
     private String id;

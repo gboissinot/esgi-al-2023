@@ -1,14 +1,13 @@
 package fr.esgi.al.account.step17.application.services;
 
 import fr.esgi.al.account.step17.application.port.in.AccountBalanceQuery;
-import fr.esgi.al.account.step17.application.port.in.GetAccountBalanceUseCase;
 import fr.esgi.al.account.step17.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step17.domain.AccountId;
-import fr.esgi.al.account.step17.domain.Money;
+import fr.esgi.al.kernel.QueryHandler;
 
 import java.util.UUID;
 
-public class GetAccountBalanceService implements GetAccountBalanceUseCase {
+public final class GetAccountBalanceService implements QueryHandler<AccountBalanceQuery, Double> {
 
     private final LoadAccountPort loadAccountPort;
 
@@ -17,8 +16,8 @@ public class GetAccountBalanceService implements GetAccountBalanceUseCase {
     }
 
     @Override
-    public Money handle(AccountBalanceQuery query) {
+    public Double handle(AccountBalanceQuery query) {
         var account = loadAccountPort.load(AccountId.of(UUID.fromString(query.accountId)));
-        return account.balance();
+        return account.balance().value();
     }
 }

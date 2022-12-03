@@ -1,4 +1,4 @@
-# Step 12
+# Step 13
 
 ## Description
 
@@ -15,3 +15,6 @@
 - CreateAccountRequest, CreateAccountResponse, TransferAccountRequest, GetBalanceResponse are the Web model
 - Web model uses also the bean validation
 - The web controller has the responsibility to invoke commands and query through the command bus and query bus
+- Application is the Spring boot entry point
+- ApplicationConfiguration uses Java Config for configuration all Spring beans : Direct Spring annotations is avoided
+  into the application layer

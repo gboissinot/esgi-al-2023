@@ -1,13 +1,10 @@
 package fr.esgi.al.account.step14;
 
 import fr.esgi.al.account.step14.adapter.out.AccountPersistenceAdapter;
-import fr.esgi.al.account.step14.application.port.in.AccountBalanceQuery;
-import fr.esgi.al.account.step14.application.port.in.CreateAccountCommand;
-import fr.esgi.al.account.step14.application.port.in.SendMoneyCommand;
+import fr.esgi.al.account.step14.application.port.in.*;
 import fr.esgi.al.account.step14.application.services.CreateAccountService;
 import fr.esgi.al.account.step14.application.services.GetAccountBalanceService;
 import fr.esgi.al.account.step14.application.services.SendMoneyService;
-import fr.esgi.al.account.step14.domain.AccountConfiguration;
 import fr.esgi.al.kernel.CommandBus;
 import fr.esgi.al.kernel.QueryBus;
 import org.springframework.context.ApplicationListener;
@@ -21,21 +18,23 @@ public class StartupApplicationListener implements ApplicationListener<ContextRe
     private final CommandBus commandBus;
     private final QueryBus queryBus;
     private final AccountPersistenceAdapter persistenceAdapter;
+    private final CreateAccountUseCase createAccountUseCase;
+    private final GetAccountBalanceUseCase accountBalanceUseCase;
+    private final SendMoneyUseCase sendMoneyUseCase;
 
-    public StartupApplicationListener(CommandBus commandBus, QueryBus queryBus, AccountPersistenceAdapter persistenceAdapter) {
+    public StartupApplicationListener(CommandBus commandBus, QueryBus queryBus, AccountPersistenceAdapter persistenceAdapter, CreateAccountService createAccountUseCase, GetAccountBalanceService accountBalanceUseCase, SendMoneyService sendMoneyUseCase) {
         this.commandBus = commandBus;
         this.queryBus = queryBus;
         this.persistenceAdapter = persistenceAdapter;
+        this.createAccountUseCase = createAccountUseCase;
+        this.accountBalanceUseCase = accountBalanceUseCase;
+        this.sendMoneyUseCase = sendMoneyUseCase;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        commandBus.register(SendMoneyCommand.class, new SendMoneyService(
-                new AccountConfiguration(500), persistenceAdapter, persistenceAdapter));
-        commandBus.register(CreateAccountCommand.class,
-                new CreateAccountService(persistenceAdapter));
-        queryBus.register(AccountBalanceQuery.class,
-                new GetAccountBalanceService(persistenceAdapter));
-
+        commandBus.register(SendMoneyCommand.class, sendMoneyUseCase);
+        commandBus.register(CreateAccountCommand.class, createAccountUseCase);
+        queryBus.register(AccountBalanceQuery.class, accountBalanceUseCase);
     }
 }

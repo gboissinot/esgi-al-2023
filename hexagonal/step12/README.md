@@ -1,4 +1,4 @@
-# Step 11
+# Step 12
 
 ## Description
 
@@ -10,7 +10,7 @@
 
 ## Explanation
 
-- CommandBus and QueryBus are into the kernel 
+- CommandBus and QueryBus are into the kernel
 - AccountController has dependencies to commandBus and queryBus
 - Bean validations is activated into the query and command bus
 - Command and Query are only extension points : the validate() method is deleted.

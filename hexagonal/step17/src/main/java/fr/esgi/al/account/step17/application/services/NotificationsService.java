@@ -3,7 +3,7 @@ package fr.esgi.al.account.step17.application.services;
 import fr.esgi.al.account.step17.application.port.out.Notifications;
 import fr.esgi.al.kernel.EventHandler;
 
-public class NotificationsService implements EventHandler<TransferAcceptedEvent> {
+public final class NotificationsService implements EventHandler<TransferAcceptedEvent> {
 
     private final Notifications notifications;
 

@@ -22,15 +22,16 @@ public class Main {
         var loadAccountPort = persistenceAdapter;
         var updateAccountStatePort = persistenceAdapter;
 
-        var createAccountService = new CreateAccountService(createAccountPort);
-        var sendMoneyService = new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort);
+        var createAccountUseCase = new CreateAccountService(createAccountPort);
+        var sendMoneyUseCase = new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort);
 
         var commandBus = BusFactory.defaultCommandBus();
-        commandBus.register(SendMoneyCommand.class, sendMoneyService);
-        commandBus.register(CreateAccountCommand.class, createAccountService);
+        commandBus.register(SendMoneyCommand.class, sendMoneyUseCase);
+        commandBus.register(CreateAccountCommand.class, createAccountUseCase);
 
         var queryBus = BusFactory.defaultQueryBus();
-        queryBus.register(AccountBalanceQuery.class, new GetAccountBalanceService(loadAccountPort));
+        var accountBalanceUseCase = new GetAccountBalanceService(loadAccountPort);
+        queryBus.register(AccountBalanceQuery.class, accountBalanceUseCase);
 
         var accountController = new AccountController(commandBus, queryBus);
 
@@ -39,8 +40,8 @@ public class Main {
 
         accountController.transfer(accountId1, accountId2, Money.of(50));
 
-        var newLoadedAccount1 = loadAccountPort.load(accountId1);
-        var newLoadedAccount2 = loadAccountPort.load(accountId2);
+        var newLoadedAccount1 = accountController.getBalance(accountId1);
+        var newLoadedAccount2 = accountController.getBalance(accountId2);
 
         System.out.println(newLoadedAccount1);
         System.out.println(newLoadedAccount2);
