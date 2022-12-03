@@ -1,6 +1,7 @@
 package fr.esgi.al.account.step17.application.services;
 
 import fr.esgi.al.account.step17.application.AccountApplicationException;
+import fr.esgi.al.account.step17.application.events.TransferAcceptedEvent;
 import fr.esgi.al.account.step17.application.port.in.SendMoneyCommand;
 import fr.esgi.al.account.step17.application.port.out.LoadAccountPort;
 import fr.esgi.al.account.step17.application.port.out.UpdateAccountStatePort;
@@ -8,6 +9,7 @@ import fr.esgi.al.account.step17.domain.AccountConfiguration;
 import fr.esgi.al.account.step17.domain.AccountId;
 import fr.esgi.al.account.step17.domain.Money;
 import fr.esgi.al.kernel.CommandHandler;
+import fr.esgi.al.kernel.Event;
 import fr.esgi.al.kernel.EventDispatcher;
 
 import javax.transaction.Transactional;
@@ -19,9 +21,9 @@ public class SendMoneyService implements CommandHandler<SendMoneyCommand, Void> 
     private final AccountConfiguration accountConfiguration;
     private final LoadAccountPort loadAccountPort;
     private final UpdateAccountStatePort updateAccountStatePort;
-    private final EventDispatcher eventDispatcher;
+    private final EventDispatcher<? super Event> eventDispatcher;
 
-    public SendMoneyService(AccountConfiguration accountConfiguration, LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort, EventDispatcher eventDispatcher) {
+    public SendMoneyService(AccountConfiguration accountConfiguration, LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort, EventDispatcher<? super Event> eventDispatcher) {
         this.accountConfiguration = accountConfiguration;
         this.loadAccountPort = loadAccountPort;
         this.updateAccountStatePort = updateAccountStatePort;

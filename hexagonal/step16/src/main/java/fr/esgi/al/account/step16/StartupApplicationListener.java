@@ -1,6 +1,5 @@
 package fr.esgi.al.account.step16;
 
-import fr.esgi.al.account.step16.adapter.out.AccountPersistenceAdapter;
 import fr.esgi.al.account.step16.application.port.in.AccountBalanceQuery;
 import fr.esgi.al.account.step16.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step16.application.port.in.SendMoneyCommand;
@@ -19,15 +18,13 @@ public class StartupApplicationListener implements ApplicationListener<ContextRe
 
     private final CommandBus commandBus;
     private final QueryBus queryBus;
-    private final AccountPersistenceAdapter persistenceAdapter;
     private final CreateAccountService createAccountService;
     private final GetAccountBalanceService accountBalanceService;
     private final SendMoneyService sendMoneyService;
 
-    public StartupApplicationListener(CommandBus commandBus, QueryBus queryBus, AccountPersistenceAdapter persistenceAdapter, CreateAccountService createAccountService, GetAccountBalanceService accountBalanceService, SendMoneyService sendMoneyService) {
+    public StartupApplicationListener(CommandBus commandBus, QueryBus queryBus, CreateAccountService createAccountService, GetAccountBalanceService accountBalanceService, SendMoneyService sendMoneyService) {
         this.commandBus = commandBus;
         this.queryBus = queryBus;
-        this.persistenceAdapter = persistenceAdapter;
         this.createAccountService = createAccountService;
         this.accountBalanceService = accountBalanceService;
         this.sendMoneyService = sendMoneyService;

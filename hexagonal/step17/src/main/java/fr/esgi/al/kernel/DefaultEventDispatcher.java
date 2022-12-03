@@ -18,6 +18,9 @@ public class DefaultEventDispatcher<E extends Event> implements EventDispatcher<
     @Override
     public void dispatch(E event) {
         var eventHandler = register.get(event.getClass());
+        if (eventHandler == null) {
+            throw new ApplicationException(String.format("No handler for the event %s", event.name()));
+        }
         eventHandler.handle(event);
     }
 

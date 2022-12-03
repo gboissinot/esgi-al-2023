@@ -1,4 +1,4 @@
-package fr.esgi.al.account.step17.application.services;
+package fr.esgi.al.account.step17.application.events;
 
 import fr.esgi.al.account.step17.domain.AccountId;
 import fr.esgi.al.account.step17.domain.Money;

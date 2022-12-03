@@ -1,13 +1,14 @@
 package fr.esgi.al.account.step17.application.services;
 
+import fr.esgi.al.account.step17.application.events.TransferAcceptedEvent;
 import fr.esgi.al.account.step17.application.port.out.Notifications;
 import fr.esgi.al.kernel.EventHandler;
 
-public final class NotificationsService implements EventHandler<TransferAcceptedEvent> {
+public final class TransferAcceptedEventHandler implements EventHandler<TransferAcceptedEvent> {
 
     private final Notifications notifications;
 
-    public NotificationsService(Notifications notifications) {
+    public TransferAcceptedEventHandler(Notifications notifications) {
         this.notifications = notifications;
     }
 

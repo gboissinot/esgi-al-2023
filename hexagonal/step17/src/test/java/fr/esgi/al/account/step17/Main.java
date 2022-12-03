@@ -3,6 +3,8 @@ package fr.esgi.al.account.step17;
 import fr.esgi.al.account.step17.adapter.in.AccountController;
 import fr.esgi.al.account.step17.adapter.out.InMemoryAccountPersistenceAdapter;
 import fr.esgi.al.account.step17.adapter.out.LogNotifications;
+import fr.esgi.al.account.step17.application.events.AccountCreatedEvent;
+import fr.esgi.al.account.step17.application.events.TransferAcceptedEvent;
 import fr.esgi.al.account.step17.application.port.in.AccountBalanceQuery;
 import fr.esgi.al.account.step17.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step17.application.port.in.SendMoneyCommand;
@@ -23,11 +25,15 @@ public class Main {
         var updateAccountStatePort = persistenceAdapter;
 
         var eventDispatcher = DefaultEventDispatcher.create();
-        eventDispatcher.register(TransferAcceptedEvent.class, new NotificationsService(new LogNotifications()));
+        var notifications = new LogNotifications();
+        var transferAcceptedEventHandler = new TransferAcceptedEventHandler(notifications);
+        var accountCreatedEventHandler = new AccountCreatedEventHandler(notifications);
+        eventDispatcher.register(TransferAcceptedEvent.class, transferAcceptedEventHandler);
+        eventDispatcher.register(AccountCreatedEvent.class, accountCreatedEventHandler);
 
         var commandBus = BusFactory.defaultCommandBus();
         commandBus.register(SendMoneyCommand.class, new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort, eventDispatcher));
-        commandBus.register(CreateAccountCommand.class, new CreateAccountService(createAccountPort));
+        commandBus.register(CreateAccountCommand.class, new CreateAccountService(createAccountPort, eventDispatcher));
 
         var queryBus = BusFactory.defaultQueryBus();
         queryBus.register(AccountBalanceQuery.class, new GetAccountBalanceService(loadAccountPort));
