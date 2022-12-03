@@ -9,14 +9,27 @@ import fr.esgi.al.account.step9.domain.Money;
 
 public class Main {
     public static void main(String[] args) {
-        var persistenceAdapter = new InMemoryAccountPersistenceAdapter();
-        var accountController =
-                new AccountController(
-                        new CreateAccountService(persistenceAdapter),
-                        new SendMoneyService(new AccountConfiguration(5000), persistenceAdapter, persistenceAdapter));
+        var accountConfiguration = new AccountConfiguration(1000L);
 
-        var accountId = accountController.create(Money.of(50));
-        var account = persistenceAdapter.load(accountId);
-        System.out.println(account);
+        var accountPersistenceAdapter = new InMemoryAccountPersistenceAdapter();
+        var loadAccountPort = accountPersistenceAdapter;
+        var createAccountPort = accountPersistenceAdapter;
+        var updateAccountStatePort = accountPersistenceAdapter;
+
+        var createAccountUseCase = new CreateAccountService(createAccountPort);
+        var sendMoneyUseCase = new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort);
+
+        var accountController = new AccountController(createAccountUseCase, sendMoneyUseCase);
+
+        var accountId1 = accountController.create(Money.of(250));
+        var accountId2 = accountController.create(Money.of(50));
+
+        accountController.transfer(accountId1, accountId2, Money.of(50));
+
+        var newLoadedAccount1 = loadAccountPort.load(accountId1);
+        var newLoadedAccount2 = loadAccountPort.load(accountId2);
+
+        System.out.println(newLoadedAccount1);
+        System.out.println(newLoadedAccount2);
     }
 }

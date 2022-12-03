@@ -2,11 +2,7 @@
 
 ## Description
 
-- Add an Anti Corruption Layer (ACL) for validating input commands
-
-## Details
-
-- Introduce Bean validations Java library
+- Add an Anti Corruption Layer (ACL) with Bean validations Java library for validating input commands
 
 ## Explanation
 
