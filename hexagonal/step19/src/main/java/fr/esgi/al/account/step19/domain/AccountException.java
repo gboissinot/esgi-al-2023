@@ -1,4 +1,4 @@
-package fr.esgi.al.account.step18.domain;
+package fr.esgi.al.account.step19.domain;
 
 public class AccountException extends RuntimeException {
     private AccountException(String message) {

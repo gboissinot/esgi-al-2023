@@ -1,7 +1,7 @@
-package fr.esgi.al.account.step18.application;
+package fr.esgi.al.account.step19.application;
 
-import fr.esgi.al.account.step18.domain.AccountId;
-import fr.esgi.al.account.step18.domain.Money;
+import fr.esgi.al.account.step19.domain.AccountId;
+import fr.esgi.al.account.step19.domain.Money;
 import fr.esgi.al.kernel.ApplicationException;
 
 public final class AccountApplicationException extends ApplicationException {

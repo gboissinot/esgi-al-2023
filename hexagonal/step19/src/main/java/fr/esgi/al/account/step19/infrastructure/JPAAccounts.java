@@ -1,13 +1,11 @@
-package fr.esgi.al.account.step18.adapter.out;
+package fr.esgi.al.account.step19.infrastructure;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import fr.esgi.al.account.step18.application.port.out.CreateAccountPort;
-import fr.esgi.al.account.step18.application.port.out.LoadAccountPort;
-import fr.esgi.al.account.step18.application.port.out.UpdateAccountStatePort;
-import fr.esgi.al.account.step18.domain.Account;
-import fr.esgi.al.account.step18.domain.AccountException;
-import fr.esgi.al.account.step18.domain.AccountId;
+import fr.esgi.al.account.step19.domain.Account;
+import fr.esgi.al.account.step19.domain.AccountException;
+import fr.esgi.al.account.step19.domain.AccountId;
+import fr.esgi.al.account.step19.domain.Accounts;
 import fr.esgi.al.kernel.Event;
 
 import java.util.ArrayList;
@@ -16,11 +14,11 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
+public class JPAAccounts implements Accounts {
 
     private final AccountEntityRepository accountEntityRepository;
 
-    public AccountPersistenceAdapter(AccountEntityRepository accountEntityRepository) {
+    public JPAAccounts(AccountEntityRepository accountEntityRepository) {
         this.accountEntityRepository = accountEntityRepository;
     }
 
@@ -30,7 +28,7 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     }
 
     @Override
-    public void save(Account account) {
+    public void add(Account account) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
         var accountEntity = new AccountEntity(account.id().value(),
@@ -40,7 +38,7 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
     }
 
     @Override
-    public Account load(AccountId accountId) {
+    public Account findById(AccountId accountId) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
         final Optional<AccountEntity> optionalAccountEntity = accountEntityRepository.findById(accountId.value());
@@ -60,14 +58,5 @@ public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccount
             return new Account(AccountId.of(UUID.fromString(accountEntity.getId())), result);
         }
         throw AccountException.notFoundAccountId(accountId);
-    }
-
-    @Override
-    public void update(Account account) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        final Gson gson = gsonBuilder.create();
-        var accountEntity = new AccountEntity(account.id().value(), account.getRecordedEvents().stream().map(event ->
-                new EventEntity(event.getClass().getName(), gson.toJson(event))).collect(Collectors.toList()));
-        accountEntityRepository.save(accountEntity);
     }
 }

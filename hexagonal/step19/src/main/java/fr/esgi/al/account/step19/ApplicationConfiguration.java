@@ -1,10 +1,14 @@
-package fr.esgi.al.account.step18;
+package fr.esgi.al.account.step19;
 
-import fr.esgi.al.account.step18.adapter.out.AccountEntityRepository;
-import fr.esgi.al.account.step18.adapter.out.AccountPersistenceAdapter;
-import fr.esgi.al.account.step18.adapter.out.LogNotifications;
-import fr.esgi.al.account.step18.application.services.*;
-import fr.esgi.al.account.step18.domain.AccountConfiguration;
+import fr.esgi.al.account.step19.application.events.AccountCreatedEventHandler;
+import fr.esgi.al.account.step19.application.events.TransferAcceptedEventHandler;
+import fr.esgi.al.account.step19.application.services.CreateAccountService;
+import fr.esgi.al.account.step19.application.services.GetAccountBalanceService;
+import fr.esgi.al.account.step19.application.services.SendMoneyService;
+import fr.esgi.al.account.step19.domain.AccountConfiguration;
+import fr.esgi.al.account.step19.infrastructure.AccountEntityRepository;
+import fr.esgi.al.account.step19.infrastructure.JPAAccounts;
+import fr.esgi.al.account.step19.infrastructure.LogNotifications;
 import fr.esgi.al.kernel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +22,8 @@ public class ApplicationConfiguration {
     private AccountEntityRepository accountEntityRepository;
 
     @Bean
-    public AccountPersistenceAdapter persistenceAdapter() {
-        return new AccountPersistenceAdapter(accountEntityRepository);
+    public JPAAccounts accounts() {
+        return new JPAAccounts(accountEntityRepository);
     }
 
     @Bean
@@ -39,18 +43,18 @@ public class ApplicationConfiguration {
 
     @Bean
     public CreateAccountService createAccountService() {
-        return new CreateAccountService(persistenceAdapter(), eventDispatcher());
+        return new CreateAccountService(accounts(), eventDispatcher());
     }
 
     @Bean
     public SendMoneyService sendMoneyService() {
         return new SendMoneyService(
-                new AccountConfiguration(500), persistenceAdapter(), persistenceAdapter(), eventDispatcher());
+                new AccountConfiguration(500), accounts(), eventDispatcher());
     }
 
     @Bean
     public GetAccountBalanceService accountBalanceService() {
-        return new GetAccountBalanceService(persistenceAdapter());
+        return new GetAccountBalanceService(accounts());
     }
 
     @Bean

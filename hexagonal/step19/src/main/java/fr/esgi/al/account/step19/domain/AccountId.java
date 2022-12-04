@@ -1,4 +1,4 @@
-package fr.esgi.al.account.step18.domain;
+package fr.esgi.al.account.step19.domain;
 
 import java.util.Objects;
 import java.util.UUID;

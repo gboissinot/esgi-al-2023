@@ -1,4 +1,4 @@
-package fr.esgi.al.account.step18.adapter.in;
+package fr.esgi.al.account.step19.exposition;
 
 public final class CreateAccountResponse {
     public final String accountId;

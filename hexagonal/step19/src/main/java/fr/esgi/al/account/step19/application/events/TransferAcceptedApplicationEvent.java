@@ -1,7 +1,7 @@
-package fr.esgi.al.account.step18.application.events;
+package fr.esgi.al.account.step19.application.events;
 
-import fr.esgi.al.account.step18.domain.AccountId;
-import fr.esgi.al.account.step18.domain.Money;
+import fr.esgi.al.account.step19.domain.AccountId;
+import fr.esgi.al.account.step19.domain.Money;
 import fr.esgi.al.kernel.Event;
 
 public final class TransferAcceptedApplicationEvent implements Event {

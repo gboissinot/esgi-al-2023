@@ -1,7 +1,6 @@
-package fr.esgi.al.account.step18.application.services;
+package fr.esgi.al.account.step19.application.events;
 
-import fr.esgi.al.account.step18.application.events.TransferAcceptedApplicationEvent;
-import fr.esgi.al.account.step18.application.port.out.Notifications;
+import fr.esgi.al.account.step19.application.Notifications;
 import fr.esgi.al.kernel.EventHandler;
 
 public final class TransferAcceptedEventHandler implements EventHandler<TransferAcceptedApplicationEvent> {

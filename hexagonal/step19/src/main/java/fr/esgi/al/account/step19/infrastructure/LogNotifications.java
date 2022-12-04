@@ -1,6 +1,6 @@
-package fr.esgi.al.account.step18.adapter.out;
+package fr.esgi.al.account.step19.infrastructure;
 
-import fr.esgi.al.account.step18.application.port.out.Notifications;
+import fr.esgi.al.account.step19.application.Notifications;
 
 public final class LogNotifications implements Notifications {
     @Override

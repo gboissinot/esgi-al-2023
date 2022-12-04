@@ -1,15 +1,18 @@
-package fr.esgi.al.account.step18;
+package fr.esgi.al.account.step19;
 
-import fr.esgi.al.account.step18.adapter.in.AccountController;
-import fr.esgi.al.account.step18.adapter.out.InMemoryAccountPersistenceAdapter;
-import fr.esgi.al.account.step18.adapter.out.LogNotifications;
-import fr.esgi.al.account.step18.application.events.AccountCreatedApplicationEvent;
-import fr.esgi.al.account.step18.application.events.TransferAcceptedApplicationEvent;
-import fr.esgi.al.account.step18.application.port.in.AccountBalanceQuery;
-import fr.esgi.al.account.step18.application.port.in.CreateAccountCommand;
-import fr.esgi.al.account.step18.application.port.in.SendMoneyCommand;
-import fr.esgi.al.account.step18.application.services.*;
-import fr.esgi.al.account.step18.domain.AccountConfiguration;
+import fr.esgi.al.account.step19.application.AccountBalanceQuery;
+import fr.esgi.al.account.step19.application.CreateAccountCommand;
+import fr.esgi.al.account.step19.application.SendMoneyCommand;
+import fr.esgi.al.account.step19.application.events.AccountCreatedApplicationEvent;
+import fr.esgi.al.account.step19.application.events.AccountCreatedEventHandler;
+import fr.esgi.al.account.step19.application.events.TransferAcceptedApplicationEvent;
+import fr.esgi.al.account.step19.application.events.TransferAcceptedEventHandler;
+import fr.esgi.al.account.step19.application.services.CreateAccountService;
+import fr.esgi.al.account.step19.application.services.GetAccountBalanceService;
+import fr.esgi.al.account.step19.application.services.SendMoneyService;
+import fr.esgi.al.account.step19.domain.AccountConfiguration;
+import fr.esgi.al.account.step19.infrastructure.InMemoryAccounts;
+import fr.esgi.al.account.step19.infrastructure.LogNotifications;
 import fr.esgi.al.kernel.BusFactory;
 import fr.esgi.al.kernel.DefaultEventDispatcher;
 
@@ -19,10 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         var accountConfiguration = new AccountConfiguration(1000L);
-        var persistenceAdapter = new InMemoryAccountPersistenceAdapter();
-        var createAccountPort = persistenceAdapter;
-        var loadAccountPort = persistenceAdapter;
-        var updateAccountStatePort = persistenceAdapter;
+        var accounts = new InMemoryAccounts();
 
         var eventDispatcher = DefaultEventDispatcher.create();
         var notifications = new LogNotifications();
@@ -32,11 +32,11 @@ public class Main {
         eventDispatcher.register(AccountCreatedApplicationEvent.class, accountCreatedEventHandler);
 
         var commandBus = BusFactory.defaultCommandBus();
-        commandBus.register(SendMoneyCommand.class, new SendMoneyService(accountConfiguration, loadAccountPort, updateAccountStatePort, eventDispatcher));
-        commandBus.register(CreateAccountCommand.class, new CreateAccountService(createAccountPort, eventDispatcher));
+        commandBus.register(SendMoneyCommand.class, new SendMoneyService(accountConfiguration, accounts, eventDispatcher));
+        commandBus.register(CreateAccountCommand.class, new CreateAccountService(accounts, eventDispatcher));
 
         var queryBus = BusFactory.defaultQueryBus();
-        queryBus.register(AccountBalanceQuery.class, new GetAccountBalanceService(loadAccountPort));
+        queryBus.register(AccountBalanceQuery.class, new GetAccountBalanceService(accounts));
 
         var accountController = new AccountController(commandBus, queryBus);
 

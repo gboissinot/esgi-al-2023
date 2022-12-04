@@ -1,8 +1,8 @@
-package fr.esgi.al.account.step18.adapter.in;
+package fr.esgi.al.account.step19.exposition;
 
-import fr.esgi.al.account.step18.application.port.in.AccountBalanceQuery;
-import fr.esgi.al.account.step18.application.port.in.CreateAccountCommand;
-import fr.esgi.al.account.step18.application.port.in.SendMoneyCommand;
+import fr.esgi.al.account.step19.application.AccountBalanceQuery;
+import fr.esgi.al.account.step19.application.CreateAccountCommand;
+import fr.esgi.al.account.step19.application.SendMoneyCommand;
 import fr.esgi.al.kernel.CommandBus;
 import fr.esgi.al.kernel.QueryBus;
 import org.springframework.beans.factory.annotation.Autowired;

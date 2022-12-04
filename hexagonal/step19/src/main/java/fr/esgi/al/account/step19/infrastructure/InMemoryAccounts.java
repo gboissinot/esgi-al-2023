@@ -1,17 +1,15 @@
-package fr.esgi.al.account.step18.adapter.out;
+package fr.esgi.al.account.step19.infrastructure;
 
-import fr.esgi.al.account.step18.application.port.out.CreateAccountPort;
-import fr.esgi.al.account.step18.application.port.out.LoadAccountPort;
-import fr.esgi.al.account.step18.application.port.out.UpdateAccountStatePort;
-import fr.esgi.al.account.step18.domain.Account;
-import fr.esgi.al.account.step18.domain.AccountException;
-import fr.esgi.al.account.step18.domain.AccountId;
+import fr.esgi.al.account.step19.domain.Account;
+import fr.esgi.al.account.step19.domain.AccountException;
+import fr.esgi.al.account.step19.domain.AccountId;
+import fr.esgi.al.account.step19.domain.Accounts;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class InMemoryAccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort, CreateAccountPort {
+public final class InMemoryAccounts implements Accounts {
 
     private final Map<AccountId, Account> registry = new HashMap<>();
 
@@ -21,20 +19,15 @@ public final class InMemoryAccountPersistenceAdapter implements LoadAccountPort,
     }
 
     @Override
-    public void save(Account account) {
+    public void add(Account account) {
         registry.put(account.id(), account);
     }
 
     @Override
-    public Account load(AccountId accountId) {
+    public Account findById(AccountId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
                     throw AccountException.notFoundAccountId(accountId);
                 });
-    }
-
-    @Override
-    public void update(Account account) {
-        registry.put(account.id(), account);
     }
 }

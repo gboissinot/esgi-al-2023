@@ -1,4 +1,4 @@
-package fr.esgi.al.account.step19.adapter.in;
+package fr.esgi.al.account.step19;
 
 import fr.esgi.al.account.step19.application.AccountBalanceQuery;
 import fr.esgi.al.account.step19.application.CreateAccountCommand;
