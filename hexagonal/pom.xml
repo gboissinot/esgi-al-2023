@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>bom</module>
         <module>step1</module>
         <module>step2</module>
         <module>step3</module>
@@ -34,5 +35,15 @@
         <module>step18</module>
         <module>step19</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.esgi.al</groupId>
+                <artifactId>bom</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
