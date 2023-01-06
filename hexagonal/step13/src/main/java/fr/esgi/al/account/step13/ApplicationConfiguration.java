@@ -8,29 +8,19 @@ import fr.esgi.al.account.step13.application.services.CreateAccountService;
 import fr.esgi.al.account.step13.application.services.GetAccountBalanceService;
 import fr.esgi.al.account.step13.application.services.SendMoneyService;
 import fr.esgi.al.account.step13.domain.AccountConfiguration;
-import fr.esgi.al.kernel.BusFactory;
-import fr.esgi.al.kernel.CommandBus;
-import fr.esgi.al.kernel.QueryBus;
+import fr.esgi.al.kernel.KernelConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
+@Import(KernelConfiguration.class)
 @SuppressWarnings("all")
 public class ApplicationConfiguration {
 
     @Bean
     public AccountPersistenceAdapter persistenceAdapter() {
         return new AccountPersistenceAdapter();
-    }
-
-    @Bean
-    public CommandBus commandBus() {
-        return BusFactory.defaultCommandBus();
-    }
-
-    @Bean
-    public QueryBus queryBus() {
-        return BusFactory.defaultQueryBus();
     }
 
     @Bean

@@ -5,9 +5,10 @@ import fr.esgi.al.account.step13.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step13.application.port.in.SendMoneyCommand;
 import fr.esgi.al.account.step13.domain.AccountId;
 import fr.esgi.al.account.step13.domain.Money;
+import fr.esgi.al.kernel.Command;
 import fr.esgi.al.kernel.CommandBus;
+import fr.esgi.al.kernel.Query;
 import fr.esgi.al.kernel.QueryBus;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +17,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/accounts")
-@SuppressWarnings("all")
 public class AccountWebController {
 
-    private final CommandBus commandBus;
-    private final QueryBus queryBus;
+    private final CommandBus<Command> commandBus;
+    private final QueryBus<Query> queryBus;
 
-    @Autowired
-    private AccountWebController(CommandBus commandBus, QueryBus queryBus) {
+    public AccountWebController(CommandBus<Command> commandBus, QueryBus<Query> queryBus) {
         this.commandBus = commandBus;
         this.queryBus = queryBus;
     }

@@ -4,6 +4,7 @@ import fr.esgi.al.account.step14.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step14.application.port.in.CreateAccountUseCase;
 import fr.esgi.al.account.step14.application.port.out.CreateAccountPort;
 import fr.esgi.al.account.step14.domain.Account;
+import fr.esgi.al.account.step14.domain.AccountException;
 import fr.esgi.al.account.step14.domain.Money;
 
 public final class CreateAccountService implements CreateAccountUseCase {

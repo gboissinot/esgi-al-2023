@@ -22,7 +22,7 @@ public class StartupApplicationListener implements ApplicationListener<ContextRe
     private final GetAccountBalanceUseCase accountBalanceUseCase;
     private final SendMoneyUseCase sendMoneyUseCase;
 
-    public StartupApplicationListener(CommandBus commandBus, QueryBus queryBus, AccountPersistenceAdapter persistenceAdapter, CreateAccountService createAccountUseCase, GetAccountBalanceService accountBalanceUseCase, SendMoneyService sendMoneyUseCase) {
+    public StartupApplicationListener(CommandBus commandBus, QueryBus queryBus, AccountPersistenceAdapter persistenceAdapter, CreateAccountUseCase createAccountUseCase, GetAccountBalanceUseCase accountBalanceUseCase, SendMoneyUseCase sendMoneyUseCase) {
         this.commandBus = commandBus;
         this.queryBus = queryBus;
         this.persistenceAdapter = persistenceAdapter;

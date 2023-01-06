@@ -3,11 +3,16 @@ package fr.esgi.al.account.step14.adapter.in;
 import fr.esgi.al.account.step14.application.port.in.AccountBalanceQuery;
 import fr.esgi.al.account.step14.application.port.in.CreateAccountCommand;
 import fr.esgi.al.account.step14.application.port.in.SendMoneyCommand;
+import fr.esgi.al.kernel.ApplicationException;
 import fr.esgi.al.kernel.CommandBus;
 import fr.esgi.al.kernel.QueryBus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
 
@@ -44,5 +49,12 @@ public class AccountWebController {
     public GetBalanceResponse getBalance(@RequestParam String accountId) {
         var balance = (Double) queryBus.post(new AccountBalanceQuery(accountId));
         return new GetBalanceResponse(balance);
+    }
+
+    @ExceptionHandler({ ApplicationException.class })
+    public ResponseEntity<Object> handleException(
+            Exception ex, WebRequest request) {
+        return new ResponseEntity<Object>(
+                "Bad request", new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 }
