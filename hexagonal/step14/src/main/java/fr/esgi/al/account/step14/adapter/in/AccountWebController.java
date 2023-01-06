@@ -51,7 +51,7 @@ public class AccountWebController {
         return new GetBalanceResponse(balance);
     }
 
-    @ExceptionHandler({ ApplicationException.class })
+    @ExceptionHandler({ApplicationException.class})
     public ResponseEntity<Object> handleException(
             Exception ex, WebRequest request) {
         return new ResponseEntity<Object>(

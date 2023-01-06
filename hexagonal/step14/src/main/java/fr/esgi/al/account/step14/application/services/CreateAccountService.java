@@ -5,7 +5,10 @@ import fr.esgi.al.account.step14.application.port.in.CreateAccountUseCase;
 import fr.esgi.al.account.step14.application.port.out.CreateAccountPort;
 import fr.esgi.al.account.step14.domain.Account;
 import fr.esgi.al.account.step14.domain.AccountException;
+import fr.esgi.al.account.step14.domain.AccountId;
 import fr.esgi.al.account.step14.domain.Money;
+
+import java.util.UUID;
 
 public final class CreateAccountService implements CreateAccountUseCase {
 
@@ -20,6 +23,7 @@ public final class CreateAccountService implements CreateAccountUseCase {
         var accountId = createAccountPort.nextId();
         var account = new Account(accountId, Money.of(command.initialMoney));
         createAccountPort.save(account);
-        return accountId.value();
+        throw AccountException.notFoundAccountId(AccountId.of(UUID.randomUUID()));
+        //return accountId.value();
     }
 }

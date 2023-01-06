@@ -5,17 +5,22 @@ import fr.esgi.al.account.step18.adapter.out.AccountPersistenceAdapter;
 import fr.esgi.al.account.step18.adapter.out.LogNotifications;
 import fr.esgi.al.account.step18.application.services.*;
 import fr.esgi.al.account.step18.domain.AccountConfiguration;
-import fr.esgi.al.kernel.*;
+import fr.esgi.al.kernel.EventDispatcher;
+import fr.esgi.al.kernel.KernelConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
-@SuppressWarnings("all")
+@Import(KernelConfiguration.class)
 public class ApplicationConfiguration {
 
     @Autowired
     private AccountEntityRepository accountEntityRepository;
+
+    @Autowired
+    private EventDispatcher eventDispatcher;
 
     @Bean
     public AccountPersistenceAdapter persistenceAdapter() {
@@ -23,29 +28,14 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public CommandBus commandBus() {
-        return BusFactory.defaultCommandBus();
-    }
-
-    @Bean
-    public QueryBus queryBus() {
-        return BusFactory.defaultQueryBus();
-    }
-
-    @Bean
-    public EventDispatcher eventDispatcher() {
-        return DefaultEventDispatcher.create();
-    }
-
-    @Bean
     public CreateAccountService createAccountService() {
-        return new CreateAccountService(persistenceAdapter(), eventDispatcher());
+        return new CreateAccountService(persistenceAdapter(), eventDispatcher);
     }
 
     @Bean
     public SendMoneyService sendMoneyService() {
         return new SendMoneyService(
-                new AccountConfiguration(500), persistenceAdapter(), persistenceAdapter(), eventDispatcher());
+                new AccountConfiguration(500), persistenceAdapter(), persistenceAdapter(), eventDispatcher);
     }
 
     @Bean
