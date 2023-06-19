@@ -12,11 +12,6 @@
 
     <artifactId>graphql</artifactId>
 
-    <properties>
-        <maven.compiler.target>16</maven.compiler.target>
-        <maven.compiler.source>16</maven.compiler.source>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package fr.esgi.al.cqrs.ms.command;
+package fr.esgi.al.cqrs.ms.query;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

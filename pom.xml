@@ -18,6 +18,7 @@
         <module>oop</module>
         <module>webapi</module>
         <module>hexagonal</module>
+        <module>cqrs</module>
     </modules>
 
 </project>
