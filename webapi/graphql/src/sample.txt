@@ -1,0 +1,34 @@
+http://localhost:8080/graphiql?path=/graphql
+
+query{
+  findUsers {
+    id
+    fullname
+    address{
+      zipCode
+    }
+  }
+}
+
+query{
+  user(id:2) {
+    fullname
+  }
+}
+
+mutation{
+  writeUser(
+    user:{
+    lastname:"BOISSINOT",
+    firstname:"YING",
+    zipCode:"sss",
+    city:"ss"
+  }
+    ) {
+    id
+    fullname
+	address{
+       city
+    }
+  }
+}

@@ -1,0 +1,7 @@
+- Migrer vers Spring 3.x
+- Check step19
+- Check et dire Add @Positive quand passage à primitif sur les commandes
+- Bien dire suppression des objets interfaces Use cases
+- Bien mettre à jour les schémas après step11
+- Rajouter l'aspect Transactionnel
+-

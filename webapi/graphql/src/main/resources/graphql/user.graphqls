@@ -1,0 +1,27 @@
+
+type User {
+    id: ID!
+    fullname: String!
+    address: Address
+}
+
+type Address {
+   zipCode: String!
+   city: String!
+}
+
+input InputUser {
+   lastname: String!
+   firstname: String!
+   zipCode: String!
+   city: String!
+}
+
+type Query {
+    findUsers: [User]
+    user(id:ID!):User
+}
+
+type Mutation {
+    writeUser(user:InputUser!): User
+}
