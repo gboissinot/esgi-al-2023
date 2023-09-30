@@ -1,7 +1,0 @@
-## Description
-- First invariant illustration
-
-## Notes
-- Invariants are checked at the creation in the constructor
-- A specific functional exception can optionally be used
-- Runtime exceptions are recommended

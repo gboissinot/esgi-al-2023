@@ -1,6 +1,0 @@
-## Description
-- DAO pattern enriched with a data model
-
-## Notes
-- Data model are expressed as DTOs
-- The creation of the data model is th responsibility of the service

@@ -1,7 +1,0 @@
-## Description
-- DAO pattern illustration
-
-## Notes
-- We have a DAO for each table
-- DAO has no domain behavior : it is oriented CRUD (Create, Read, Update, Delete)
-- The service has the responsibility to orchestrate each DAO

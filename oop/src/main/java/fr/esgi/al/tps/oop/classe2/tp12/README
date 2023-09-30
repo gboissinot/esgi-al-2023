@@ -1,7 +1,0 @@
-## Description
-- Colis Entity with a new ColisHistory Value Object
-
-## Notes
-- ColisHistory is an internal object : it is not exposed to the API Client through the history() method
-- ColisHistory.add() method doesn't break immutability: a new list is created
-- Colis's history is updated to each functional methods : deliver() and cancel()

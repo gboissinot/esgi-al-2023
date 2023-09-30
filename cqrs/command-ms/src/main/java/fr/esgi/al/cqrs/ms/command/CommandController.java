@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CommandController {
 
-    @Autowired
-    private KafkaTemplate<String, Object> template;
+    private final KafkaTemplate<String, Object> template;
+
+    public CommandController(KafkaTemplate<String, Object> template) {
+        this.template = template;
+    }
 
     @PostMapping(path = "/send/foo/{what}")
     public void pushMessage(@PathVariable String what) {

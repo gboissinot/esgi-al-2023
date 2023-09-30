@@ -1,13 +1,11 @@
 package fr.esgi.al.cqrs.ms.command;
 
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -19,15 +17,8 @@ import java.util.Map;
 @Configuration
 class KafkaTopicConfig {
 
-
-
     @Autowired
     private KafkaProperties kafkaProperties;
-
-    @Bean
-    public NewTopic topic() {
-        return TopicBuilder.name("command-1").build();
-    }
 
     @Bean
     public Map<String, Object> producerConfigs() {

@@ -1,0 +1,5 @@
+package fr.esgi.al.tps.oop.tp23;
+
+public interface EventDispatcher {
+    void dispatch(Event event);
+}
